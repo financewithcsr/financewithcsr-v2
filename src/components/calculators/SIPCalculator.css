@@ -1,0 +1,50 @@
+.sip-page {
+  max-width: 1200px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.sip-card,
+.summary-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.sip-card h1 {
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.sip-card p {
+  color: #64748b;
+  margin-bottom: 35px;
+}
+
+.summary-card {
+  background: #2563eb;
+  color: white;
+}
+
+.summary-item {
+  margin-top: 30px;
+}
+
+.summary-item small {
+  opacity: 0.85;
+}
+
+.summary-item h2,
+.summary-item h1 {
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .sip-page {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,35 @@
+.cta-section{
+    padding:90px 0;
+    background:#F8FAFC;
+}
+
+.cta-box{
+    background:#2563EB;
+    color:#fff;
+    border-radius:24px;
+    padding:70px;
+    text-align:center;
+}
+
+.cta-box h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.cta-box p{
+    max-width:700px;
+    margin:0 auto 35px;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.cta-box button{
+    background:#fff;
+    color:#2563EB;
+    border:none;
+    padding:16px 34px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+}

@@ -1,0 +1,33 @@
+.why-section{
+    padding:90px 0;
+    background:#fff;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-top:50px;
+}
+
+.why-card{
+    padding:35px;
+    border-radius:16px;
+    background:#F8FAFC;
+    transition:.3s;
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.why-card h3{
+    margin-bottom:15px;
+    color:#0F172A;
+}
+
+.why-card p{
+    color:#64748B;
+    line-height:1.7;
+}

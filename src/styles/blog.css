@@ -1,0 +1,48 @@
+.blog-section{
+    padding:90px 0;
+    background:#ffffff;
+}
+
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:50px;
+}
+
+.blog-card{
+    background:#F8FAFC;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.blog-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.blog-image{
+    height:220px;
+    background:linear-gradient(135deg,#2563EB,#60A5FA);
+}
+
+.blog-card h3{
+    padding:25px 25px 10px;
+}
+
+.blog-card p{
+    padding:0 25px;
+    color:#64748B;
+    line-height:1.8;
+}
+
+.blog-card button{
+    margin:25px;
+    background:#2563EB;
+    color:#fff;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+}
