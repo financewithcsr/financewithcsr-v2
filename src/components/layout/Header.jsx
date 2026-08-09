@@ -4,7 +4,7 @@ import "../../styles/header.css";
 function Header() {
   return (
     <header>
-      <div className="header-container">
+      <div className="header">
         <NavLink to="/" className="logo">
           FinanceWithCSR
         </NavLink>
@@ -26,12 +26,18 @@ function Header() {
         </nav>
 
         <div className="header-actions">
-          <button className="search-btn">🔍 Search</button>
+          <button className="search-btn">
+            🔍 Search
+          </button>
 
-          <button className="login-btn">Login</button>
+          <button className="login-btn">
+            Login
+          </button>
         </div>
 
-        <button className="menu-btn">☰</button>
+        <button className="menu-btn">
+          ☰
+        </button>
       </div>
     </header>
   );
