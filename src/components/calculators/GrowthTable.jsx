@@ -1,11 +1,13 @@
+import "./GrowthTable.css";
+
 function GrowthTable({
   monthlyInvestment,
   annualReturn,
   years,
 }) {
-  const monthlyRate = annualReturn / 12 / 100;
-
   const rows = [];
+
+  const monthlyRate = annualReturn / 12 / 100;
 
   for (let year = 1; year <= years; year++) {
     const months = year * 12;
@@ -23,76 +25,63 @@ function GrowthTable({
     rows.push({
       year,
       invested,
-      maturity,
+      returns: maturity - invested,
+      total: maturity,
     });
   }
 
   return (
-    <div
-      style={{
-        marginTop: "60px",
-        background: "#fff",
-        borderRadius: "20px",
-        padding: "30px",
-        boxShadow: "0 8px 20px rgba(0,0,0,.08)",
-      }}
-    >
-      <h2>Year-wise Growth</h2>
+    <div className="growth-table">
 
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          marginTop: "25px",
-        }}
-      >
+      <h2>Year-wise Investment Growth</h2>
+
+      <table>
+
         <thead>
-          <tr
-            style={{
-              background: "#EFF6FF",
-            }}
-          >
-            <th style={{ padding: "14px" }}>Year</th>
 
-            <th>Investment</th>
-
-            <th>Value</th>
+          <tr>
+            <th>Year</th>
+            <th>Invested Amount</th>
+            <th>Returns</th>
+            <th>Total Value</th>
           </tr>
+
         </thead>
 
         <tbody>
+
           {rows.map((row) => (
-            <tr
-              key={row.year}
-              style={{
-                borderBottom:
-                  "1px solid #E5E7EB",
-              }}
-            >
-              <td style={{ padding: "14px" }}>
-                {row.year}
-              </td>
+
+            <tr key={row.year}>
+
+              <td>{row.year}</td>
 
               <td>
-                ₹{" "}
-                {row.invested.toLocaleString(
-                  "en-IN"
-                )}
+                ₹ {row.invested.toLocaleString("en-IN")}
               </td>
 
-              <td>
+              <td style={{ color: "#16A34A" }}>
                 ₹{" "}
-                {row.maturity.toLocaleString(
-                  "en-IN",
-                  {
-                    maximumFractionDigits: 0,
-                  }
-                )}
+                {row.returns.toLocaleString("en-IN", {
+                  maximumFractionDigits: 0,
+                })}
               </td>
+
+              <td style={{ fontWeight: 600 }}>
+                ₹{" "}
+                {row.total.toLocaleString("en-IN", {
+                  maximumFractionDigits: 0,
+                })}
+              </td>
+
             </tr>
+
           ))}
+
         </tbody>
+
       </table>
+
     </div>
   );
 }

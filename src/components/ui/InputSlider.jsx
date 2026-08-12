@@ -11,7 +11,7 @@ function InputSlider({
   prefix = "",
 }) {
   const handleInputChange = (e) => {
-    const newValue = Number(e.target.value);
+    const newValue = Number(e.target.value.replace(/,/g, ""));
 
     if (!isNaN(newValue)) {
       if (newValue >= min && newValue <= max) {
@@ -20,20 +20,31 @@ function InputSlider({
     }
   };
 
+  const formatNumber = (number) => {
+    return Number(number).toLocaleString("en-IN");
+  };
+
   return (
     <div className="input-slider">
-      <div className="slider-header">
-        <label className="slider-label">{label}</label>
 
-        <input
-          className="slider-input"
-          type="number"
-          value={value}
-          min={min}
-          max={max}
-          step={step}
-          onChange={handleInputChange}
-        />
+      <div className="slider-top">
+
+        <label>{label}</label>
+
+        <div className="input-box">
+
+          {prefix && <span className="prefix">{prefix}</span>}
+
+          <input
+            type="text"
+            value={formatNumber(value)}
+            onChange={handleInputChange}
+          />
+
+          {suffix && <span className="suffix">{suffix}</span>}
+
+        </div>
+
       </div>
 
       <input
@@ -46,18 +57,21 @@ function InputSlider({
         onChange={(e) => setValue(Number(e.target.value))}
       />
 
-      <div className="slider-footer">
+      <div className="slider-values">
+
         <span>
           {prefix}
-          {min.toLocaleString("en-IN")}
+          {formatNumber(min)}
         </span>
 
         <span>
           {prefix}
-          {max.toLocaleString("en-IN")}
+          {formatNumber(max)}
           {suffix}
         </span>
+
       </div>
+
     </div>
   );
 }

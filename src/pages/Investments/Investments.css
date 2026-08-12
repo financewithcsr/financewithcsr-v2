@@ -1,0 +1,220 @@
+.investments-page{
+    max-width:1300px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.investments-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.investments-header h1{
+    font-size:48px;
+    font-weight:800;
+    color:#0F172A;
+    margin-bottom:20px;
+}
+
+.investments-header p{
+    max-width:720px;
+    margin:auto;
+    color:#64748B;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.calculator-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.calculator-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    border:1px solid #E2E8F0;
+
+    box-shadow:0 15px 40px rgba(15,23,42,.08);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.calculator-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(
+        90deg,
+        #2563EB,
+        #22C55E
+    );
+
+}
+
+.calculator-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 60px rgba(37,99,235,.15);
+
+}
+
+.calculator-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:18px;
+
+    background:#EFF6FF;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:34px;
+
+    margin-bottom:25px;
+
+}
+
+.calculator-card h3{
+
+    color:#0F172A;
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+.calculator-card p{
+
+    color:#64748B;
+
+    line-height:1.8;
+
+    min-height:70px;
+
+    margin-bottom:25px;
+
+}
+
+.calculator-card button{
+
+    width:100%;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.calculator-card button:not(.coming-soon-btn){
+
+    background:#2563EB;
+
+    color:white;
+
+}
+
+.calculator-card button:not(.coming-soon-btn):hover{
+
+    background:#1D4ED8;
+
+}
+
+.coming-soon-btn{
+
+    background:#F8FAFC;
+
+    color:#64748B;
+
+    border:1px solid #CBD5E1 !important;
+
+    cursor:not-allowed;
+
+}
+
+.coming-soon-btn:hover{
+
+    background:#F8FAFC;
+
+}
+
+@media(max-width:992px){
+
+.investments-page{
+
+padding:60px 20px;
+
+}
+
+.investments-header h1{
+
+font-size:38px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.calculator-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.investments-header h1{
+
+font-size:32px;
+
+}
+
+.investments-header p{
+
+font-size:16px;
+
+}
+
+.calculator-card{
+
+padding:28px;
+
+}
+
+}

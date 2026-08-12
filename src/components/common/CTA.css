@@ -1,0 +1,83 @@
+.cta{
+    padding:110px 8%;
+    background:linear-gradient(135deg,#1E3A8A,#2563EB);
+    color:white;
+}
+
+.cta-container{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+.cta-badge{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    padding:10px 20px;
+    border-radius:30px;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.cta h2{
+    font-size:52px;
+    line-height:1.2;
+    margin-bottom:25px;
+}
+
+.cta p{
+    max-width:700px;
+    margin:auto;
+    color:#DBEAFE;
+    line-height:1.8;
+    font-size:20px;
+    margin-bottom:45px;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.cta-primary{
+    background:white;
+    color:#2563EB;
+    padding:18px 34px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+}
+
+.cta-primary:hover{
+    transform:translateY(-4px);
+}
+
+.cta-secondary{
+    border:2px solid white;
+    color:white;
+    padding:18px 34px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+}
+
+.cta-secondary:hover{
+    background:white;
+    color:#2563EB;
+}
+
+@media(max-width:768px){
+
+.cta h2{
+font-size:36px;
+}
+
+.cta p{
+font-size:17px;
+}
+
+}

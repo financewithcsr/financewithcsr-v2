@@ -1,33 +1,76 @@
+import "./Stats.css";
+import { useNavigate } from "react-router-dom";
+
 function Stats() {
-  const stats = [
+  const navigate = useNavigate();
+
+  const cards = [
     {
-      number: "25+",
-      title: "Financial Calculators",
+      title: "SIP Calculator",
+      value: "Most Popular",
+      icon: "📈",
+      color: "#DBEAFE",
+      path: "/investments/sip",
     },
     {
-      number: "100+",
-      title: "Finance Articles",
+      title: "FD Calculator",
+      value: "Safe Investment",
+      icon: "🏦",
+      color: "#DCFCE7",
+      path: "/investments/fd",
     },
     {
-      number: "1M+",
-      title: "Calculations Performed",
+      title: "EMI Calculator",
+      value: "Loan Planning",
+      icon: "💸",
+      color: "#FEF3C7",
+      path: "/loans/emi",
     },
     {
-      number: "24×7",
-      title: "Free Access",
+      title: "PPF Calculator",
+      value: "Tax Saving",
+      icon: "🛡️",
+      color: "#F3E8FF",
+      path: "/investments/ppf",
     },
   ];
 
   return (
     <section className="stats">
-      <div className="container stats-grid">
-        {stats.map((item) => (
-          <div className="stat-card" key={item.title}>
-            <h2>{item.number}</h2>
-            <p>{item.title}</p>
-          </div>
-        ))}
+
+      <div className="stats-container">
+
+        <h2>Popular Calculators</h2>
+
+        <p>
+          Start with the calculators used by thousands of users to plan their finances.
+        </p>
+
+        <div className="stats-grid">
+
+          {cards.map((card) => (
+            <div
+              key={card.title}
+              className="stat-card"
+              onClick={() => navigate(card.path)}
+            >
+              <div
+                className="stat-icon"
+                style={{ background: card.color }}
+              >
+                {card.icon}
+              </div>
+
+              <h3>{card.title}</h3>
+
+              <span>{card.value}</span>
+            </div>
+          ))}
+
+        </div>
+
       </div>
+
     </section>
   );
 }

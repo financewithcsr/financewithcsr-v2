@@ -1,0 +1,161 @@
+.finance-insight {
+  margin-top: 50px;
+  padding: 35px;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    #eff6ff,
+    #ffffff
+  );
+  border: 1px solid #bfdbfe;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.insight-icon {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 30px;
+
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.insight-content {
+  flex: 1;
+}
+
+.insight-label {
+  display: inline-block;
+
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  margin-bottom: 8px;
+}
+
+.insight-content h2 {
+  margin: 0 0 15px;
+
+  color: #0f172a;
+
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+.insight-content p {
+  margin: 0;
+
+  color: #475569;
+
+  line-height: 1.8;
+
+  font-size: 16px;
+}
+
+.insight-value {
+  margin: 25px 0;
+
+  font-size: 38px;
+  font-weight: 800;
+
+  color: #16a34a;
+}
+
+.insight-comparison {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  border: 1px solid #e2e8f0;
+}
+
+.insight-comparison div:not(.insight-arrow) {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.insight-comparison span {
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.insight-comparison strong {
+  color: #0f172a;
+
+  font-size: 20px;
+}
+
+.insight-arrow {
+  color: #2563eb;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.insight-footer {
+  margin-top: 20px !important;
+
+  font-size: 14px !important;
+
+  color: #64748b !important;
+}
+
+@media (max-width: 768px) {
+  .finance-insight {
+    padding: 25px;
+
+    flex-direction: column;
+  }
+
+  .insight-content h2 {
+    font-size: 22px;
+  }
+
+  .insight-value {
+    font-size: 30px;
+  }
+
+  .insight-comparison {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+  }
+
+  .insight-comparison div:not(.insight-arrow) {
+    align-items: center;
+  }
+
+  .insight-arrow {
+    transform: rotate(90deg);
+  }
+}

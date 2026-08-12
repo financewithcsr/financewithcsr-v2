@@ -1,0 +1,72 @@
+.related-section {
+  margin-top: 70px;
+}
+
+.related-section h2 {
+  text-align: center;
+  font-size: 38px;
+  color: #0f172a;
+  margin-bottom: 40px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.related-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.related-card:hover {
+  transform: translateY(-6px);
+}
+
+.related-icon {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.related-card h3 {
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+.related-card p {
+  color: #64748b;
+  line-height: 1.7;
+  min-height: 70px;
+}
+
+.related-card button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.related-card button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 992px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-section h2 {
+    font-size: 30px;
+  }
+}

@@ -1,8 +1,19 @@
 import { useState } from "react";
+
+import CalculatorLayout from "../calculator/CalculatorLayout";
+import SummaryCard from "../calculator/SummaryCard";
+import InvestmentPieChart from "../calculator/PieChart";
+
 import InputSlider from "../ui/InputSlider";
-import SIPChart from "./SIPChart";
+import GrowthChart from "./GrowthChart";
 import GrowthTable from "./GrowthTable";
-import "./SIPCalculator.css";
+import SIPBenefits from "./SIPBenefits";
+import SIPFAQ from "./SIPFAQ";
+import RelatedCalculators from "./RelatedCalculators";
+
+import FinanceInsight from "../calculator/FinanceInsight";
+import CompareSIP from "../calculator/CompareSIP";
+import GoalSIP from "../calculator/GoalSIP";
 
 function SIPCalculator() {
   const [monthlyInvestment, setMonthlyInvestment] = useState(5000);
@@ -20,32 +31,14 @@ function SIPCalculator() {
           (1 + monthlyRate));
 
   const investedAmount = monthlyInvestment * months;
-  const wealthGained = maturityValue - investedAmount;
+  const returns = maturityValue - investedAmount;
 
   return (
-    <div
-      style={{
-        maxWidth: "1200px",
-        margin: "50px auto",
-        padding: "20px",
-      }}
-    >
-      {/* Top Section */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "2fr 1fr",
-          gap: "30px",
-        }}
-      >
-        {/* Left Card */}
-        <div className="sip-card">
-          <h1>SIP Calculator</h1>
-
-          <p>
-            Calculate your future wealth using monthly SIP investments.
-          </p>
-
+    <CalculatorLayout
+      title="SIP Calculator"
+      description="Calculate the future value of your monthly SIP investments and understand how compounding helps grow your wealth."
+      left={
+        <>
           <InputSlider
             label="Monthly Investment"
             value={monthlyInvestment}
@@ -73,51 +66,64 @@ function SIPCalculator() {
             max={40}
             suffix=" Years"
           />
-        </div>
-
-        {/* Right Card */}
-        <div className="summary-card">
-          <h2>Investment Summary</h2>
-
-          <SIPChart
+        </>
+      }
+      right={
+        <>
+          <InvestmentPieChart
             investedAmount={investedAmount}
-            wealthGained={wealthGained}
+            returns={returns}
           />
 
-          <div className="summary-item">
-            <small>Total Investment</small>
-            <h2>₹ {investedAmount.toLocaleString("en-IN")}</h2>
-          </div>
+          <SummaryCard
+            monthlyInvestment={monthlyInvestment}
+            annualReturn={annualReturn}
+            years={years}
+            investedAmount={investedAmount}
+            returns={returns}
+            totalValue={maturityValue}
+          />
+        </>
+      }
+      table={
+        <>
+          <GrowthChart
+            monthlyInvestment={monthlyInvestment}
+            annualReturn={annualReturn}
+            years={years}
+          />
 
-          <div className="summary-item">
-            <small>Estimated Returns</small>
-            <h2>
-              ₹{" "}
-              {wealthGained.toLocaleString("en-IN", {
-                maximumFractionDigits: 0,
-              })}
-            </h2>
-          </div>
+          <GrowthTable
+            monthlyInvestment={monthlyInvestment}
+            annualReturn={annualReturn}
+            years={years}
+          />
 
-          <div className="summary-item">
-            <small>Maturity Value</small>
-            <h1>
-              ₹{" "}
-              {maturityValue.toLocaleString("en-IN", {
-                maximumFractionDigits: 0,
-              })}
-            </h1>
-          </div>
-        </div>
-      </div>
+          <FinanceInsight
+            monthlyInvestment={monthlyInvestment}
+            annualReturn={annualReturn}
+            years={years}
+          />
 
-      {/* Bottom Full Width Table */}
-      <GrowthTable
-        monthlyInvestment={monthlyInvestment}
-        annualReturn={annualReturn}
-        years={years}
-      />
-    </div>
+          <CompareSIP
+            monthlyInvestment={monthlyInvestment}
+            annualReturn={annualReturn}
+            years={years}
+          />
+
+          <GoalSIP
+            annualReturn={annualReturn}
+            years={years}
+          />
+
+          <SIPBenefits />
+
+          <SIPFAQ />
+
+          <RelatedCalculators />
+        </>
+      }
+    />
   );
 }
 

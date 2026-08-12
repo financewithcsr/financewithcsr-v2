@@ -1,18 +1,13 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import "./Layout.css";
 
 function Layout({ children }) {
   return (
     <>
       <Header />
 
-      <main
-        style={{
-          minHeight: "80vh",
-          padding: "40px 60px",
-          background: "#F8FAFC",
-        }}
-      >
+      <main className="layout-main">
         {children}
       </main>
 

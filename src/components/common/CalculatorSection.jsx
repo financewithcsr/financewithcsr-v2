@@ -1,51 +1,131 @@
+import "./CalculatorSection.css";
+import { useNavigate } from "react-router-dom";
+
 function CalculatorSection() {
-  const calculators = [
+  const navigate = useNavigate();
+
+  const investments = [
     {
       title: "SIP Calculator",
-      description: "Calculate your future wealth with monthly SIP investments.",
-    },
-    {
-      title: "EMI Calculator",
-      description: "Know your monthly EMI before taking a loan.",
-    },
-    {
-      title: "Income Tax Calculator",
-      description: "Estimate your tax under the old and new regime.",
+      icon: "📈",
+      path: "/investments/sip",
     },
     {
       title: "FD Calculator",
-      description: "Calculate maturity amount and interest earned.",
+      icon: "🏦",
+      path: "/investments/fd",
+    },
+    {
+      title: "RD Calculator",
+      icon: "💳",
+      path: "/investments/rd",
+    },
+    {
+      title: "Lumpsum Calculator",
+      icon: "💰",
+      path: "/investments/lumpsum",
     },
     {
       title: "PPF Calculator",
-      description: "Estimate your long-term PPF returns.",
+      icon: "🛡️",
+      path: "/investments/ppf",
     },
     {
-      title: "Retirement Calculator",
-      description: "Plan your retirement corpus with confidence.",
+      title: "CAGR Calculator",
+      icon: "📊",
+      path: "/investments/cagr",
+    },
+  ];
+
+  const loans = [
+    {
+      title: "EMI Calculator",
+      icon: "💸",
+      path: "/loans/emi",
+    },
+    {
+      title: "Home Loan",
+      icon: "🏠",
+      path: "/loans/home-loan",
+    },
+    {
+      title: "Car Loan",
+      icon: "🚗",
+      path: "/loans/car-loan",
+    },
+    {
+      title: "Personal Loan",
+      icon: "👤",
+      path: "/loans/personal-loan",
     },
   ];
 
   return (
     <section className="calculator-section">
-      <div className="container">
-        <h2 className="section-title">Featured Calculators</h2>
 
-        <p className="section-subtitle">
-          Powerful financial tools to help you make smarter money decisions.
+      <div className="calculator-container">
+
+        <h2>Financial Calculators</h2>
+
+        <p>
+          Smart calculators to help you plan investments,
+          loans and your financial future.
         </p>
 
-        <div className="calculator-grid">
-          {calculators.map((item) => (
-            <div className="calculator-card" key={item.title}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+        <h3 className="section-title">
+          Investment Calculators
+        </h3>
 
-              <button>Open Calculator →</button>
+        <div className="calculator-grid">
+
+          {investments.map((item) => (
+            <div
+              className="calculator-card"
+              key={item.title}
+              onClick={() => navigate(item.path)}
+            >
+              <div className="calculator-icon">
+                {item.icon}
+              </div>
+
+              <h4>{item.title}</h4>
+
+              <button>
+                Open Calculator →
+              </button>
             </div>
           ))}
+
         </div>
+
+        <h3 className="section-title">
+          Loan Calculators
+        </h3>
+
+        <div className="calculator-grid">
+
+          {loans.map((item) => (
+            <div
+              className="calculator-card"
+              key={item.title}
+              onClick={() => navigate(item.path)}
+            >
+              <div className="calculator-icon">
+                {item.icon}
+              </div>
+
+              <h4>{item.title}</h4>
+
+              <button>
+                Open Calculator →
+              </button>
+            </div>
+          ))}
+
+        </div>
+
       </div>
+
     </section>
   );
 }

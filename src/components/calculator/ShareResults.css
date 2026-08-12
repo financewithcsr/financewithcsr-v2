@@ -1,0 +1,65 @@
+.share-results{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.share-results button{
+
+    border:none;
+    border-radius:12px;
+
+    padding:14px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.pdf-btn{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+.pdf-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.share-btn{
+
+    background:#22c55e;
+    color:white;
+
+}
+
+.share-btn:hover{
+
+    background:#16a34a;
+
+}
+
+.print-btn{
+
+    background:#f8fafc;
+
+    border:1px solid #dbeafe !important;
+
+    color:#0f172a;
+
+}
+
+.print-btn:hover{
+
+    background:#eff6ff;
+
+}

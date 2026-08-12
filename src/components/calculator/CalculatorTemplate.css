@@ -1,0 +1,40 @@
+.calculator-template{
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.calculator-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+    align-items:start;
+}
+
+.calculator-left{
+    background:#ffffff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 10px 25px rgba(15,23,42,.08);
+}
+
+.calculator-right{
+    position:sticky;
+    top:100px;
+}
+
+@media(max-width:992px){
+
+.calculator-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.calculator-right{
+
+position:static;
+
+}
+
+}

@@ -1,47 +1,95 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/layout/Layout";
 
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import Investments from "./pages/Investments/Investments";
-import Loans from "./pages/Loans/Loans";
-import Tax from "./pages/Tax/Tax";
-import Planning from "./pages/Planning/Planning";
-import Blog from "./pages/Blog/Blog";
-import Contact from "./pages/Contact/Contact";
 
+// Investment Calculators
 import SIPCalculator from "./components/calculators/SIPCalculator";
-import EMICalculator from "./components/calculators/EMICalculator";
+import FDCalculator from "./components/fd/FDCalculator";
+import RDCalculator from "./components/rd/RDCalculator";
+import LumpsumCalculator from "./components/lumpsum/LumpsumCalculator";
+import CAGRCalculator from "./components/cagr/CAGRCalculator";
+import PPFCalculator from "./components/ppf/PPFCalculator";
 
-import "./styles/hero.css";
-import "./styles/stats.css";
-import "./styles/calculators.css";
-import "./styles/why.css";
-import "./styles/blog.css";
-import "./styles/cta.css";
+// Loan Calculators
+import EMICalculator from "./components/emi/EMICalculator";
+import HomeLoanCalculator from "./components/homeloan/HomeLoanCalculator";
+import CarLoanCalculator from "./components/carloan/CarLoanCalculator";
+import PersonalLoanCalculator from "./components/personalloan/PersonalLoanCalculator";
 
 function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Home />} />
 
-        <Route path="/investments" element={<Investments />} />
+        {/* Home */}
         <Route
-          path="/investments/sip-calculator"
+          path="/"
+          element={<Home />}
+        />
+
+        {/* Investments Landing */}
+        <Route
+          path="/investments"
+          element={<Investments />}
+        />
+
+        {/* Investment Calculators */}
+        <Route
+          path="/investments/sip"
           element={<SIPCalculator />}
         />
 
-        <Route path="/loans" element={<Loans />} />
         <Route
-          path="/loans/emi-calculator"
+          path="/investments/fd"
+          element={<FDCalculator />}
+        />
+
+        <Route
+          path="/investments/rd"
+          element={<RDCalculator />}
+        />
+
+        <Route
+          path="/investments/lumpsum"
+          element={<LumpsumCalculator />}
+        />
+
+        <Route
+          path="/investments/cagr"
+          element={<CAGRCalculator />}
+        />
+
+        <Route
+          path="/investments/ppf"
+          element={<PPFCalculator />}
+        />
+
+        {/* Loan Calculators */}
+
+        <Route
+          path="/loans/emi"
           element={<EMICalculator />}
         />
 
-        <Route path="/tax" element={<Tax />} />
-        <Route path="/planning" element={<Planning />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/loans/home-loan"
+          element={<HomeLoanCalculator />}
+        />
+
+        <Route
+          path="/loans/car-loan"
+          element={<CarLoanCalculator />}
+        />
+
+        <Route
+          path="/loans/personal-loan"
+          element={<PersonalLoanCalculator />}
+        />
+
       </Routes>
     </Layout>
   );

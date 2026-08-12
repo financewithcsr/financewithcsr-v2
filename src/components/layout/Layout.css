@@ -1,0 +1,13 @@
+.layout-main{
+    min-height:80vh;
+    background:#F8FAFC;
+    padding:40px 20px;
+}
+
+@media(max-width:768px){
+
+.layout-main{
+    padding:25px 15px;
+}
+
+}

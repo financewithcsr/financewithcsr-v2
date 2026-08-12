@@ -1,0 +1,45 @@
+.calculator-header{
+
+    margin-bottom:35px;
+
+}
+
+.calculator-header h1{
+
+    font-size:40px;
+
+    color:#0F172A;
+
+    margin-bottom:12px;
+
+    font-weight:700;
+
+}
+
+.calculator-header p{
+
+    color:#64748B;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+    max-width:750px;
+
+}
+
+@media(max-width:900px){
+
+.calculator-header h1{
+
+font-size:30px;
+
+}
+
+.calculator-header p{
+
+font-size:16px;
+
+}
+
+}

@@ -3,42 +3,61 @@ import "../../styles/header.css";
 
 function Header() {
   return (
-    <header>
+    <header className="site-header">
+
       <div className="header">
+
         <NavLink to="/" className="logo">
-          FinanceWithCSR
+          Finance<span>WithCSR</span>
         </NavLink>
 
         <nav className="nav-links">
+
           <NavLink to="/">Home</NavLink>
 
-          <NavLink to="/investments">Investments</NavLink>
+          <NavLink to="/investments">
+            Investments
+          </NavLink>
 
-          <NavLink to="/loans">Loans</NavLink>
+          <NavLink to="/loans">
+            Loans
+          </NavLink>
 
-          <NavLink to="/tax">Tax</NavLink>
+          <NavLink to="/tax">
+            Tax
+          </NavLink>
 
-          <NavLink to="/planning">Planning</NavLink>
+          <NavLink to="/planning">
+            Planning
+          </NavLink>
 
-          <NavLink to="/blog">Blog</NavLink>
+          <NavLink to="/blog">
+            Blog
+          </NavLink>
 
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/contact">
+            Contact
+          </NavLink>
+
         </nav>
 
         <div className="header-actions">
+
           <button className="search-btn">
             🔍 Search
           </button>
 
-          <button className="login-btn">
-            Login
-          </button>
+          <NavLink
+            to="/investments/sip"
+            className="login-btn"
+          >
+            Start Now
+          </NavLink>
+
         </div>
 
-        <button className="menu-btn">
-          ☰
-        </button>
       </div>
+
     </header>
   );
 }

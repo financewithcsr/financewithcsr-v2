@@ -1,52 +1,105 @@
-import { Link } from "react-router-dom";
+import "./Investments.css";
+import { useNavigate } from "react-router-dom";
+
+const calculators = [
+  {
+    title: "SIP Calculator",
+    description:
+      "Calculate the future value of your monthly SIP investments.",
+    icon: "📈",
+    path: "/investments/sip",
+    available: true,
+  },
+  {
+    title: "FD Calculator",
+    description:
+      "Calculate fixed deposit maturity amount.",
+    icon: "🏦",
+    path: "/investments/fd",
+    available: true,
+  },
+  {
+    title: "Lumpsum Calculator",
+    description:
+      "Estimate returns on one-time investments.",
+    icon: "💰",
+    available: false,
+  },
+  {
+    title: "RD Calculator",
+    description:
+      "Estimate recurring deposit maturity value.",
+    icon: "💳",
+    available: false,
+  },
+  {
+    title: "PPF Calculator",
+    description:
+      "Plan your long-term savings with PPF.",
+    icon: "🛡️",
+    available: false,
+  },
+  {
+    title: "CAGR Calculator",
+    description:
+      "Calculate annualized investment growth.",
+    icon: "📊",
+    available: false,
+  },
+];
 
 function Investments() {
+  const navigate = useNavigate();
+
   return (
-    <div className="container" style={{ padding: "80px 0" }}>
-      <h1>Investment Calculators</h1>
+    <section className="investments-page">
 
-      <p style={{ marginBottom: "40px" }}>
-        Choose a calculator to start planning your investments.
-      </p>
+      <div className="investments-header">
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "25px",
-        }}
-      >
-        <div
-          style={{
-            background: "#fff",
-            padding: "30px",
-            borderRadius: "16px",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-          }}
-        >
-          <h2>SIP Calculator</h2>
+        <h1>Investment Calculators</h1>
 
-          <p>
-            Calculate your future wealth based on monthly SIP investments.
-          </p>
+        <p>
+          Choose a calculator below and start planning your financial future with confidence.
+        </p>
 
-          <Link
-            to="/investments/sip-calculator"
-            style={{
-              display: "inline-block",
-              marginTop: "20px",
-              padding: "12px 22px",
-              background: "#2563EB",
-              color: "#fff",
-              borderRadius: "8px",
-              textDecoration: "none",
-            }}
-          >
-            Open Calculator →
-          </Link>
-        </div>
       </div>
-    </div>
+
+      <div className="calculator-grid">
+
+        {calculators.map((item, index) => (
+
+          <div className="calculator-card" key={index}>
+
+            <div className="calculator-icon">
+              {item.icon}
+            </div>
+
+            <h3>{item.title}</h3>
+
+            <p>{item.description}</p>
+
+            {item.available ? (
+              <button
+                onClick={() => navigate(item.path)}
+              >
+                Open Calculator →
+              </button>
+            ) : (
+              <button
+                className="coming-soon-btn"
+                disabled
+              >
+                Coming Soon
+              </button>
+            )}
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </section>
   );
 }
 

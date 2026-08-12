@@ -9,7 +9,7 @@
 
 .sip-card,
 .summary-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 20px;
   padding: 35px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -18,16 +18,18 @@
 .sip-card h1 {
   margin-bottom: 10px;
   color: #0f172a;
+  font-size: 36px;
 }
 
 .sip-card p {
   color: #64748b;
   margin-bottom: 35px;
+  line-height: 1.7;
 }
 
 .summary-card {
   background: #2563eb;
-  color: white;
+  color: #ffffff;
 }
 
 .summary-item {
@@ -36,6 +38,8 @@
 
 .summary-item small {
   opacity: 0.85;
+  display: block;
+  margin-bottom: 6px;
 }
 
 .summary-item h2,
@@ -43,8 +47,83 @@
   margin-top: 8px;
 }
 
+.summary-item h1 {
+  font-size: 34px;
+}
+
+/* ===========================================
+   Growth Table
+=========================================== */
+
+.growth-table {
+  margin-top: 50px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.growth-table h2 {
+  margin-bottom: 25px;
+  color: #0f172a;
+  font-size: 28px;
+}
+
+.growth-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.growth-table thead {
+  background: #2563eb;
+}
+
+.growth-table th {
+  color: #ffffff;
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.growth-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.growth-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.growth-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===========================================
+   Responsive
+=========================================== */
+
 @media (max-width: 900px) {
   .sip-page {
     grid-template-columns: 1fr;
+  }
+
+  .sip-card,
+  .summary-card,
+  .growth-table {
+    padding: 25px;
+  }
+
+  .sip-card h1 {
+    font-size: 28px;
+  }
+
+  .growth-table h2 {
+    font-size: 24px;
+  }
+
+  .growth-table table {
+    min-width: 700px;
   }
 }
