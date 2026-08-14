@@ -4,52 +4,50 @@ import { useNavigate } from "react-router-dom";
 const calculators = [
   {
     title: "SIP Calculator",
-    description:
-      "Calculate the future value of your monthly SIP investments.",
+    description: "Calculate the future value of your monthly SIP investments.",
     icon: "📈",
     path: "/investments/sip",
-    available: true,
   },
   {
     title: "FD Calculator",
-    description:
-      "Calculate fixed deposit maturity amount.",
+    description: "Calculate fixed deposit maturity amount.",
     icon: "🏦",
     path: "/investments/fd",
-    available: true,
   },
   {
     title: "Lumpsum Calculator",
-    description:
-      "Estimate returns on one-time investments.",
+    description: "Estimate returns on one-time investments.",
     icon: "💰",
-    available: false,
+    path: "/investments/lumpsum",
   },
   {
     title: "RD Calculator",
-    description:
-      "Estimate recurring deposit maturity value.",
+    description: "Estimate recurring deposit maturity value.",
     icon: "💳",
-    available: false,
+    path: "/investments/rd",
   },
   {
     title: "PPF Calculator",
-    description:
-      "Plan your long-term savings with PPF.",
+    description: "Plan your long-term savings with PPF.",
     icon: "🛡️",
-    available: false,
+    path: "/investments/ppf",
   },
   {
     title: "CAGR Calculator",
-    description:
-      "Calculate annualized investment growth.",
+    description: "Calculate annualized investment growth.",
     icon: "📊",
-    available: false,
+    path: "/investments/cagr",
   },
 ];
 
 function Investments() {
   const navigate = useNavigate();
+
+  const openCalculator = (path) => {
+    console.log("Navigating to:", path);
+
+    navigate(path);
+  };
 
   return (
     <section className="investments-page">
@@ -59,16 +57,20 @@ function Investments() {
         <h1>Investment Calculators</h1>
 
         <p>
-          Choose a calculator below and start planning your financial future with confidence.
+          Choose a calculator below and start planning your financial future
+          with confidence.
         </p>
 
       </div>
 
       <div className="calculator-grid">
 
-        {calculators.map((item, index) => (
+        {calculators.map((item) => (
 
-          <div className="calculator-card" key={index}>
+          <div
+            className="calculator-card"
+            key={item.title}
+          >
 
             <div className="calculator-icon">
               {item.icon}
@@ -78,20 +80,12 @@ function Investments() {
 
             <p>{item.description}</p>
 
-            {item.available ? (
-              <button
-                onClick={() => navigate(item.path)}
-              >
-                Open Calculator →
-              </button>
-            ) : (
-              <button
-                className="coming-soon-btn"
-                disabled
-              >
-                Coming Soon
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={() => openCalculator(item.path)}
+            >
+              CLICK ME TEST →
+            </button>
 
           </div>
 

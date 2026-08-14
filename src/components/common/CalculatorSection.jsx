@@ -1,131 +1,142 @@
-import "./CalculatorSection.css";
 import { useNavigate } from "react-router-dom";
+import "./CalculatorSection.css";
 
 function CalculatorSection() {
   const navigate = useNavigate();
 
-  const investments = [
+  const calculators = [
     {
-      title: "SIP Calculator",
       icon: "📈",
+      title: "SIP Calculator",
+      description: "Estimate your SIP investment growth and future value.",
       path: "/investments/sip",
     },
     {
-      title: "FD Calculator",
       icon: "🏦",
+      title: "FD Calculator",
+      description: "Calculate Fixed Deposit maturity and interest earned.",
       path: "/investments/fd",
     },
     {
+      icon: "💰",
       title: "RD Calculator",
-      icon: "💳",
+      description: "Calculate your monthly RD investment and maturity amount.",
       path: "/investments/rd",
     },
     {
-      title: "Lumpsum Calculator",
-      icon: "💰",
-      path: "/investments/lumpsum",
-    },
-    {
-      title: "PPF Calculator",
       icon: "🛡️",
+      title: "PPF Calculator",
+      description: "Estimate PPF investment growth and maturity value.",
       path: "/investments/ppf",
     },
     {
-      title: "CAGR Calculator",
       icon: "📊",
+      title: "Lumpsum Calculator",
+      description: "Estimate returns on your one-time investment.",
+      path: "/investments/lumpsum",
+    },
+    {
+      icon: "📈",
+      title: "CAGR Calculator",
+      description: "Calculate the annual growth rate of your investment.",
       path: "/investments/cagr",
     },
-  ];
-
-  const loans = [
     {
-      title: "EMI Calculator",
-      icon: "💸",
-      path: "/loans/emi",
-    },
-    {
-      title: "Home Loan",
       icon: "🏠",
+      title: "Home Loan Calculator",
+      description: "Calculate your home loan EMI and total interest.",
       path: "/loans/home-loan",
     },
     {
-      title: "Car Loan",
       icon: "🚗",
+      title: "Car Loan Calculator",
+      description: "Estimate your car loan EMI and repayment amount.",
       path: "/loans/car-loan",
     },
     {
-      title: "Personal Loan",
-      icon: "👤",
+      icon: "💳",
+      title: "Personal Loan Calculator",
+      description: "Calculate your personal loan EMI and interest cost.",
       path: "/loans/personal-loan",
+    },
+    {
+      icon: "🧮",
+      title: "EMI Calculator",
+      description: "Calculate EMI for different types of loans.",
+      path: "/loans/emi",
     },
   ];
 
   return (
     <section className="calculator-section">
-
       <div className="calculator-container">
 
-        <h2>Financial Calculators</h2>
+        <div className="calculator-heading">
 
-        <p>
-          Smart calculators to help you plan investments,
-          loans and your financial future.
-        </p>
+          <span className="section-tag">
+            Financial Tools
+          </span>
 
-        <h3 className="section-title">
-          Investment Calculators
-        </h3>
+          <h2>
+            Popular Calculators
+          </h2>
+
+          <p>
+            Start with the calculators used by thousands of users
+            to plan their finances.
+          </p>
+
+        </div>
 
         <div className="calculator-grid">
 
-          {investments.map((item) => (
-            <div
+          {calculators.map((calculator) => (
+
+            <button
+              key={calculator.title}
+              type="button"
               className="calculator-card"
-              key={item.title}
-              onClick={() => navigate(item.path)}
+              onClick={() => navigate(calculator.path)}
             >
+
               <div className="calculator-icon">
-                {item.icon}
+                {calculator.icon}
               </div>
 
-              <h4>{item.title}</h4>
+              <div className="calculator-content">
 
-              <button>
-                Open Calculator →
-              </button>
-            </div>
+                <h3>
+                  {calculator.title}
+                </h3>
+
+                <p>
+                  {calculator.description}
+                </p>
+
+              </div>
+
+              <span className="calculator-arrow">
+                →
+              </span>
+
+            </button>
+
           ))}
 
         </div>
 
-        <h3 className="section-title">
-          Loan Calculators
-        </h3>
+        <div className="calculator-view-all">
 
-        <div className="calculator-grid">
-
-          {loans.map((item) => (
-            <div
-              className="calculator-card"
-              key={item.title}
-              onClick={() => navigate(item.path)}
-            >
-              <div className="calculator-icon">
-                {item.icon}
-              </div>
-
-              <h4>{item.title}</h4>
-
-              <button>
-                Open Calculator →
-              </button>
-            </div>
-          ))}
+          <button
+            type="button"
+            onClick={() => navigate("/investments")}
+          >
+            View All Calculators →
+          </button>
 
         </div>
 
       </div>
-
     </section>
   );
 }

@@ -1,6 +1,5 @@
 import Hero from "../../components/common/Hero";
 import Stats from "../../components/common/Stats";
-import CalculatorSearch from "../../components/common/CalculatorSearch";
 import CalculatorSection from "../../components/common/CalculatorSection";
 import WhyChoose from "../../components/common/WhyChoose";
 import BlogSection from "../../components/common/BlogSection";
@@ -12,8 +11,6 @@ function Home() {
       <Hero />
 
       <Stats />
-
-      <CalculatorSearch />
 
       <CalculatorSection />
 

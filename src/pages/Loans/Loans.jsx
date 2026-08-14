@@ -31,7 +31,7 @@ function Loans() {
           </p>
 
           <Link
-            to="/loans/emi-calculator"
+            to="/loans/emi"
             style={{
               display: "inline-block",
               marginTop: "20px",

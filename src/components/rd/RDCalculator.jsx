@@ -6,29 +6,35 @@ import InvestmentPieChart from "../calculator/PieChart";
 
 import InputSlider from "../ui/InputSlider";
 
+import GrowthChart from "./GrowthChart";
+import GrowthTable from "./GrowthTable";
+import RDBenefits from "./RDBenefits";
+import RDFAQ from "./RDFAQ";
+import RelatedCalculators from "./RelatedCalculators";
+
 function RDCalculator() {
   const [monthlyDeposit, setMonthlyDeposit] = useState(5000);
   const [interestRate, setInterestRate] = useState(7);
-  const [years, setYears] = useState(10);
+  const [years, setYears] = useState(5);
 
   const months = years * 12;
   const monthlyRate = interestRate / 12 / 100;
 
-  const maturityValue =
-    monthlyRate === 0
-      ? monthlyDeposit * months
-      : monthlyDeposit *
-        (((Math.pow(1 + monthlyRate, months) - 1) /
-          monthlyRate) *
-          (1 + monthlyRate));
-
   const investedAmount = monthlyDeposit * months;
-  const returns = maturityValue - investedAmount;
+
+  const maturityAmount =
+    monthlyRate === 0
+      ? investedAmount
+      : monthlyDeposit *
+        ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) *
+        (1 + monthlyRate);
+
+  const interestEarned = maturityAmount - investedAmount;
 
   return (
     <CalculatorLayout
       title="RD Calculator"
-      description="Calculate the maturity amount of your Recurring Deposit."
+      description="Calculate your Recurring Deposit maturity amount, total interest earned, and total investment."
 
       left={
         <>
@@ -47,17 +53,18 @@ function RDCalculator() {
             value={interestRate}
             setValue={setInterestRate}
             min={1}
-            max={12}
+            max={15}
             step={0.1}
             suffix="%"
           />
 
           <InputSlider
-            label="Investment Period"
+            label="RD Tenure"
             value={years}
             setValue={setYears}
             min={1}
-            max={30}
+            max={10}
+            step={1}
             suffix=" Years"
           />
         </>
@@ -67,14 +74,58 @@ function RDCalculator() {
         <>
           <InvestmentPieChart
             investedAmount={investedAmount}
-            returns={returns}
+            returns={interestEarned}
           />
 
           <SummaryCard
             investedAmount={investedAmount}
-            returns={returns}
-            totalValue={maturityValue}
+            returns={interestEarned}
+            totalValue={maturityAmount}
           />
+
+          <div
+            style={{
+              marginTop: "20px",
+              background: "#fff",
+              borderRadius: "18px",
+              padding: "25px",
+              textAlign: "center",
+              boxShadow: "0 10px 25px rgba(0,0,0,.08)",
+            }}
+          >
+            <h3>Maturity Amount</h3>
+
+            <h1
+              style={{
+                color: "#2563EB",
+                marginTop: "10px",
+              }}
+            >
+              ₹ {Math.round(maturityAmount).toLocaleString("en-IN")}
+            </h1>
+          </div>
+        </>
+      }
+
+      table={
+        <>
+          <GrowthChart
+            investment={monthlyDeposit}
+            annualReturn={interestRate}
+            years={years}
+          />
+
+          <GrowthTable
+            investment={monthlyDeposit}
+            annualReturn={interestRate}
+            years={years}
+          />
+
+          <RDBenefits />
+
+          <RDFAQ />
+
+          <RelatedCalculators />
         </>
       }
     />

@@ -1,76 +1,107 @@
-import "./Stats.css";
-import { useNavigate } from "react-router-dom";
-
 function Stats() {
-  const navigate = useNavigate();
-
-  const cards = [
+  const stats = [
     {
-      title: "SIP Calculator",
-      value: "Most Popular",
-      icon: "📈",
-      color: "#DBEAFE",
-      path: "/investments/sip",
+      number: "25+",
+      title: "Financial Calculators",
     },
     {
-      title: "FD Calculator",
-      value: "Safe Investment",
-      icon: "🏦",
-      color: "#DCFCE7",
-      path: "/investments/fd",
+      number: "100+",
+      title: "Finance Articles",
     },
     {
-      title: "EMI Calculator",
-      value: "Loan Planning",
-      icon: "💸",
-      color: "#FEF3C7",
-      path: "/loans/emi",
+      number: "1M+",
+      title: "Calculations Performed",
     },
     {
-      title: "PPF Calculator",
-      value: "Tax Saving",
-      icon: "🛡️",
-      color: "#F3E8FF",
-      path: "/investments/ppf",
+      number: "24×7",
+      title: "Free Access",
     },
   ];
 
   return (
-    <section className="stats">
+    <section
+      style={{
+        width: "100%",
+        background: "#ffffff",
+        padding: "42px 24px",
+        boxSizing: "border-box",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1100px",
+          margin: "0 auto",
 
-      <div className="stats-container">
+          display: "grid",
+          gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+          gap: "18px",
+        }}
+      >
+        {stats.map((stat) => (
+          <div
+            key={stat.title}
+            style={{
+              background: "#ffffff",
+              border: "1px solid #dbe3ef",
+              borderRadius: "14px",
 
-        <h2>Popular Calculators</h2>
+              padding: "24px 16px",
 
-        <p>
-          Start with the calculators used by thousands of users to plan their finances.
-        </p>
+              textAlign: "center",
 
-        <div className="stats-grid">
+              boxShadow:
+                "0 6px 18px rgba(15, 23, 42, 0.06)",
 
-          {cards.map((card) => (
-            <div
-              key={card.title}
-              className="stat-card"
-              onClick={() => navigate(card.path)}
+              boxSizing: "border-box",
+            }}
+          >
+            <h2
+              style={{
+                margin: "0",
+
+                color: "#0f172a",
+
+                fontSize: "30px",
+                lineHeight: "1.2",
+                fontWeight: "800",
+              }}
             >
-              <div
-                className="stat-icon"
-                style={{ background: card.color }}
-              >
-                {card.icon}
-              </div>
+              {stat.number}
+            </h2>
 
-              <h3>{card.title}</h3>
+            <p
+              style={{
+                margin: "8px 0 0",
 
-              <span>{card.value}</span>
-            </div>
-          ))}
+                color: "#64748b",
 
-        </div>
-
+                fontSize: "13px",
+                lineHeight: "1.4",
+                fontWeight: "500",
+              }}
+            >
+              {stat.title}
+            </p>
+          </div>
+        ))}
       </div>
 
+      <style>
+        {`
+          @media (max-width: 800px) {
+            section > div {
+              grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+          }
+
+          @media (max-width: 500px) {
+            section > div {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 }

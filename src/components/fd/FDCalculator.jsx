@@ -3,15 +3,12 @@ import { useState } from "react";
 import CalculatorLayout from "../calculator/CalculatorLayout";
 import SummaryCard from "../calculator/SummaryCard";
 import InvestmentPieChart from "../calculator/PieChart";
-
 import InputSlider from "../ui/InputSlider";
 
 function FDCalculator() {
   const [deposit, setDeposit] = useState(100000);
   const [interestRate, setInterestRate] = useState(7);
   const [years, setYears] = useState(5);
-
-  // Annual Compounding
 
   const maturityValue =
     deposit * Math.pow(1 + interestRate / 100, years);

@@ -1,72 +1,134 @@
-import "./Hero.css";
 import { useNavigate } from "react-router-dom";
+import "./Hero.css";
 
 function Hero() {
   const navigate = useNavigate();
 
   return (
     <section className="hero">
+      <div className="container hero-wrapper">
 
-      <div className="hero-left">
+        {/* LEFT */}
 
-        <span className="hero-tag">
-          🇮🇳 FinanceWithCSR
-        </span>
+        <div className="hero-left">
 
-        <h1>
-          India's Smart Personal
-          <br />
-          Finance Calculator Hub
-        </h1>
+          <span className="hero-badge">
+            IN FinanceWithCSR
+          </span>
 
-        <p>
-          Calculate SIP, FD, RD, PPF, EMI, Home Loan,
-          Car Loan, Personal Loan, CAGR and many more
-          with beautiful charts and instant insights.
-        </p>
+          <h1>
+            India's Smart Personal Finance Calculator Hub
+          </h1>
 
-        <div className="hero-buttons">
+          <p>
+            Calculate SIP, FD, RD, PPF, EMI, Home Loan, Car Loan,
+            Personal Loan, CAGR and more with simple calculations,
+            beautiful charts and instant insights.
+          </p>
 
-          <button
-            className="primary-btn"
-            onClick={() => navigate("/investments")}
-          >
-            Explore Calculators
-          </button>
+          <div className="hero-buttons">
 
-          <button
-            className="secondary-btn"
-            onClick={() => navigate("/investments/sip")}
-          >
-            SIP Calculator
-          </button>
+            <button
+              className="primary-btn"
+              onClick={() => navigate("/investments")}
+            >
+              Explore Calculators
+            </button>
+
+            <button
+              className="secondary-btn"
+              onClick={() => navigate("/investments/sip")}
+            >
+              SIP Calculator
+            </button>
+
+          </div>
+
+          <div className="hero-features">
+
+            <span>✓ Free to use</span>
+
+            <span>✓ Simple calculations</span>
+
+            <span>✓ No registration</span>
+
+          </div>
 
         </div>
 
-      </div>
+        {/* RIGHT */}
 
-      <div className="hero-right">
+        <div className="hero-right">
 
-        <div className="hero-card">
+          <div className="hero-card">
 
-          <h3>💰 Monthly SIP</h3>
+            <div className="hero-header">
 
-          <h1>₹5,000</h1>
+              <h4>Financial Planning</h4>
 
-          <p>20 Years @ 12%</p>
+              <span className="status-dot"></span>
 
-          <div className="hero-result">
+            </div>
 
-            <span>Future Value</span>
+            <div className="hero-main">
 
-            <strong>₹49.95 Lakhs</strong>
+              <div className="hero-icon">
+                ₹
+              </div>
+
+              <div>
+
+                <small>Plan your money better</small>
+
+                <h2>
+                  Calculate.
+                  <br />
+                  Compare.
+                  <br />
+                  Plan.
+                </h2>
+
+              </div>
+
+            </div>
+
+            <div className="hero-stats">
+
+              <div className="stat-box">
+                <strong>10+</strong>
+                <span>Calculators</span>
+              </div>
+
+              <div className="stat-box">
+                <strong>₹</strong>
+                <span>Smart Planning</span>
+              </div>
+
+              <div className="stat-box">
+                <strong>∞</strong>
+                <span>Possibilities</span>
+              </div>
+
+            </div>
+
+            <div className="chart-area">
+
+              <div className="line line1"></div>
+              <div className="line line2"></div>
+              <div className="line line3"></div>
+
+              <span className="point p1"></span>
+              <span className="point p2"></span>
+              <span className="point p3"></span>
+              <span className="point p4"></span>
+
+            </div>
 
           </div>
 
         </div>
 
       </div>
-
     </section>
   );
 }

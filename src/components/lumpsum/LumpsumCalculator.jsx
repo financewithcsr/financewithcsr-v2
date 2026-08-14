@@ -6,6 +6,14 @@ import InvestmentPieChart from "../calculator/PieChart";
 
 import InputSlider from "../ui/InputSlider";
 
+import GrowthChart from "./GrowthChart";
+import GrowthTable from "./GrowthTable";
+import LumpsumBenefits from "./LumpsumBenefits";
+import LumpsumFAQ from "./LumpsumFAQ";
+import RelatedCalculators from "../common/RelatedCalculators";
+import FinanceInsight from "../calculator/FinanceInsight";
+import CTA from "../common/CTA";
+
 function LumpsumCalculator() {
   const [investment, setInvestment] = useState(100000);
   const [annualReturn, setAnnualReturn] = useState(12);
@@ -35,7 +43,7 @@ function LumpsumCalculator() {
           />
 
           <InputSlider
-            label="Expected Return"
+            label="Expected Annual Return"
             value={annualReturn}
             setValue={setAnnualReturn}
             min={1}
@@ -67,6 +75,36 @@ function LumpsumCalculator() {
             returns={returns}
             totalValue={maturityValue}
           />
+        </>
+      }
+
+      table={
+        <>
+          <GrowthChart
+            investment={investment}
+            annualReturn={annualReturn}
+            years={years}
+          />
+
+          <GrowthTable
+            investment={investment}
+            annualReturn={annualReturn}
+            years={years}
+          />
+
+          <FinanceInsight
+            monthlyInvestment={investment}
+            annualReturn={annualReturn}
+            years={years}
+          />
+
+          <LumpsumBenefits />
+
+          <LumpsumFAQ />
+
+          <RelatedCalculators />
+
+          <CTA />
         </>
       }
     />

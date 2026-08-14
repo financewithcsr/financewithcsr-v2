@@ -11,10 +11,13 @@ import {
 import "./GrowthChart.css";
 
 function GrowthChart({
+  investment,
   monthlyInvestment,
   annualReturn,
   years,
 }) {
+  const amount = monthlyInvestment ?? investment ?? 0;
+
   const data = [];
 
   const monthlyRate = annualReturn / 12 / 100;
@@ -22,12 +25,12 @@ function GrowthChart({
   for (let year = 1; year <= years; year++) {
     const months = year * 12;
 
-    const invested = monthlyInvestment * months;
+    const invested = amount * months;
 
     const value =
       monthlyRate === 0
         ? invested
-        : monthlyInvestment *
+        : amount *
           (((Math.pow(1 + monthlyRate, months) - 1) /
             monthlyRate) *
             (1 + monthlyRate));
@@ -41,13 +44,10 @@ function GrowthChart({
 
   return (
     <div className="growth-chart">
-
       <h2>Investment Growth</h2>
 
       <ResponsiveContainer width="100%" height={350}>
-
         <LineChart data={data}>
-
           <CartesianGrid strokeDasharray="3 3" />
 
           <XAxis dataKey="year" />
@@ -71,11 +71,8 @@ function GrowthChart({
             strokeWidth={4}
             dot={false}
           />
-
         </LineChart>
-
       </ResponsiveContainer>
-
     </div>
   );
 }

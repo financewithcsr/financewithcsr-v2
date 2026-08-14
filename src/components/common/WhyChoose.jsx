@@ -5,25 +5,25 @@ const features = [
     icon: "⚡",
     title: "Fast Calculations",
     description:
-      "Get accurate financial results instantly without waiting or complicated formulas.",
+      "Get financial results instantly without complicated formulas or manual calculations.",
   },
   {
     icon: "🎯",
     title: "Accurate Results",
     description:
-      "All calculators are based on standard financial formulas used by professionals.",
+      "Use standard financial formulas to understand your investments, loans and savings.",
   },
   {
     icon: "🔒",
     title: "100% Free",
     description:
-      "No signup. No subscriptions. Every calculator is completely free forever.",
+      "No signup, no subscription and no hidden charges. Use our calculators whenever you need.",
   },
   {
     icon: "🇮🇳",
     title: "Made for India",
     description:
-      "Designed specifically for Indian investors, salaried employees and families.",
+      "Built for Indian investors, salaried employees and families to make better money decisions.",
   },
 ];
 
@@ -32,8 +32,10 @@ function WhyChoose() {
     <section className="why">
       <div className="why-container">
 
-        <div className="section-title">
-          <span>WHY FINANCEWITHCSR?</span>
+        <div className="why-heading">
+          <span className="why-tag">
+            WHY FINANCEWITHCSR?
+          </span>
 
           <h2>
             Everything You Need to
@@ -43,20 +45,29 @@ function WhyChoose() {
 
           <p>
             Whether you're planning investments, calculating EMIs,
-            saving taxes or preparing for retirement,
-            FinanceWithCSR gives you powerful tools to make smarter
-            financial decisions.
+            saving taxes or preparing for the future, FinanceWithCSR
+            gives you simple tools to understand your money better.
           </p>
         </div>
 
         <div className="why-grid">
-          {features.map((item, index) => (
-            <div className="why-card" key={index}>
-              <div className="why-icon">{item.icon}</div>
+          {features.map((item) => (
+            <div className="why-card" key={item.title}>
 
-              <h3>{item.title}</h3>
+              <div className="why-icon">
+                {item.icon}
+              </div>
 
-              <p>{item.description}</p>
+              <div className="why-content">
+                <h3>
+                  {item.title}
+                </h3>
+
+                <p>
+                  {item.description}
+                </p>
+              </div>
+
             </div>
           ))}
         </div>

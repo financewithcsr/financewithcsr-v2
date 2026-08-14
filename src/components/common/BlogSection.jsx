@@ -19,7 +19,7 @@ const blogs = [
     category: "TAX",
     title: "New Tax Regime Explained",
     description:
-      "Understand the latest income tax slabs and choose the best regime for maximum savings.",
+      "Understand income tax basics and make better decisions for your savings.",
     date: "8 min read",
   },
 ];
@@ -66,6 +66,12 @@ function BlogSection() {
 
             </div>
           ))}
+        </div>
+
+        <div className="blog-btn">
+          <button>
+            View All Articles →
+          </button>
         </div>
 
       </div>

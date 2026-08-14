@@ -6,10 +6,20 @@ import InvestmentPieChart from "../calculator/PieChart";
 
 import InputSlider from "../ui/InputSlider";
 
+import GrowthChart from "./GrowthChart";
+import GrowthTable from "./GrowthTable";
+import PPFBenefits from "./PPFBenefits";
+import PPFFAQ from "./PPFFAQ";
+import RelatedCalculators from "../common/RelatedCalculators";
+import FinanceInsight from "../calculator/FinanceInsight";
+import CTA from "../common/CTA";
+
 function PPFCalculator() {
   const [yearlyInvestment, setYearlyInvestment] = useState(150000);
   const [interestRate, setInterestRate] = useState(7.1);
   const [years, setYears] = useState(15);
+
+  const investedAmount = yearlyInvestment * years;
 
   let maturityValue = 0;
 
@@ -19,13 +29,12 @@ function PPFCalculator() {
       (1 + interestRate / 100);
   }
 
-  const investedAmount = yearlyInvestment * years;
   const returns = maturityValue - investedAmount;
 
   return (
     <CalculatorLayout
       title="PPF Calculator"
-      description="Estimate the maturity value of your Public Provident Fund investment."
+      description="Calculate your Public Provident Fund maturity amount, total investment and interest earned."
 
       left={
         <>
@@ -72,6 +81,36 @@ function PPFCalculator() {
             returns={returns}
             totalValue={maturityValue}
           />
+        </>
+      }
+
+      table={
+        <>
+          <GrowthChart
+            investment={yearlyInvestment}
+            annualReturn={interestRate}
+            years={years}
+          />
+
+          <GrowthTable
+            investment={yearlyInvestment}
+            annualReturn={interestRate}
+            years={years}
+          />
+
+          <FinanceInsight
+            yearlyInvestment={yearlyInvestment}
+            annualReturn={interestRate}
+            years={years}
+          />
+
+          <PPFBenefits />
+
+          <PPFFAQ />
+
+          <RelatedCalculators />
+
+          <CTA />
         </>
       }
     />

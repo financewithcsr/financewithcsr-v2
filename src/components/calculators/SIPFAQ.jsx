@@ -3,29 +3,34 @@ import "./SIPFAQ.css";
 
 const faqs = [
   {
-    question: "What is SIP?",
+    question: "What is a SIP Calculator?",
     answer:
-      "A Systematic Investment Plan (SIP) allows you to invest a fixed amount regularly in mutual funds. It helps build wealth through disciplined investing."
+      "A SIP Calculator helps estimate the future value of your monthly mutual fund investments based on the investment amount, expected annual return, and investment period."
   },
   {
-    question: "Is SIP better than FD?",
+    question: "How does a SIP Calculator work?",
     answer:
-      "SIPs invest in market-linked mutual funds and may provide higher long-term returns, while Fixed Deposits offer stable but generally lower returns."
+      "It uses the standard SIP formula to calculate the estimated maturity amount by considering monthly investments, expected annual returns, and the total investment duration."
   },
   {
-    question: "Can I stop my SIP anytime?",
+    question: "Is SIP better than Fixed Deposit (FD)?",
     answer:
-      "Yes. Most mutual fund SIPs can be stopped, paused, or modified without any penalty."
+      "SIPs invest in market-linked mutual funds and have the potential to generate higher long-term returns, while Fixed Deposits offer fixed and guaranteed returns with lower risk."
   },
   {
-    question: "What happens if I miss one SIP installment?",
+    question: "Can I increase my SIP amount later?",
     answer:
-      "Missing one installment generally does not cancel your SIP. The fund house may simply skip that month's investment."
+      "Yes. Most mutual fund companies allow investors to increase, decrease, pause, or stop their SIP at any time according to their financial goals."
   },
   {
-    question: "How much should I invest in SIP?",
+    question: "What is the minimum amount to start a SIP?",
     answer:
-      "Choose an amount based on your income, expenses, financial goals, and investment horizon. Even small monthly investments can grow over time."
+      "Many mutual funds allow you to start investing with as little as ₹100 or ₹500 per month depending on the fund."
+  },
+  {
+    question: "Does this SIP Calculator guarantee returns?",
+    answer:
+      "No. The calculator provides estimated values based on assumed annual returns. Actual returns depend on market performance."
   }
 ];
 
@@ -49,9 +54,7 @@ function SIPFAQ() {
           >
             <span>{faq.question}</span>
 
-            <span>
-              {active === index ? "−" : "+"}
-            </span>
+            <span>{active === index ? "−" : "+"}</span>
 
           </button>
 

@@ -11,31 +11,31 @@ function CalculatorLayout({
   related,
 }) {
   return (
-    <div className="calculator-page">
+    <main className="calculator-page">
 
-      <div className="calculator-header">
-
+      <header className="calculator-header">
         <h1>{title}</h1>
 
         <p>{description}</p>
+      </header>
 
-      </div>
+      <section className="calculator-main">
 
-      <div className="calculator-main">
-
-        <CalculatorSidebar />
+        <aside>
+          <CalculatorSidebar />
+        </aside>
 
         <div className="calculator-content">
 
           <div className="calculator-grid">
 
-            <div className="calculator-left">
+            <section className="calculator-left">
               {left}
-            </div>
+            </section>
 
-            <div className="calculator-right">
+            <aside className="calculator-right">
               {right}
-            </div>
+            </aside>
 
           </div>
 
@@ -59,9 +59,9 @@ function CalculatorLayout({
 
         </div>
 
-      </div>
+      </section>
 
-    </div>
+    </main>
   );
 }
 
