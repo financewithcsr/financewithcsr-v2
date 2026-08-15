@@ -84,7 +84,7 @@ function Investments() {
               type="button"
               onClick={() => openCalculator(item.path)}
             >
-              CLICK ME TEST →
+              Open Calculator →
             </button>
 
           </div>
