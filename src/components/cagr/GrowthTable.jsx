@@ -1,28 +1,27 @@
 function GrowthTable({
-  investment,
-  annualReturn,
+  initialValue,
+  finalValue,
   years,
 }) {
   const rows = [];
 
-  let totalValue = 0;
+  const cagr =
+    initialValue > 0 && years > 0
+      ? Math.pow(
+          finalValue / initialValue,
+          1 / years
+        ) - 1
+      : 0;
 
-  for (let year = 1; year <= years; year++) {
-    totalValue =
-      (totalValue + investment) *
-      (1 + annualReturn / 100);
-
-    const investedAmount =
-      investment * year;
-
-    const returns =
-      totalValue - investedAmount;
+  for (let year = 0; year <= years; year++) {
+    const value =
+      initialValue *
+      Math.pow(1 + cagr, year);
 
     rows.push({
       year,
-      invested: investedAmount,
-      returns,
-      total: totalValue,
+      value,
+      returns: value - initialValue,
     });
   }
 
@@ -38,13 +37,13 @@ function GrowthTable({
         border: "1px solid #E2E8F0",
         borderRadius: "20px",
         padding: "28px",
-        boxShadow: "0 8px 24px rgba(15, 23, 42, 0.06)",
+        boxShadow:
+          "0 8px 24px rgba(15, 23, 42, 0.06)",
         boxSizing: "border-box",
         width: "100%",
       }}
     >
       <div style={{ marginBottom: "24px" }}>
-
         <h2
           style={{
             margin: 0,
@@ -53,7 +52,7 @@ function GrowthTable({
             color: "#0F172A",
           }}
         >
-          Year-wise PPF Growth
+          Year-wise CAGR Growth
         </h2>
 
         <p
@@ -64,13 +63,11 @@ function GrowthTable({
             color: "#64748B",
           }}
         >
-          See how your PPF investment can grow year by year.
+          See how your investment value grows each year at the calculated CAGR.
         </p>
-
       </div>
 
       <div style={{ overflowX: "auto" }}>
-
         <table
           style={{
             width: "100%",
@@ -78,11 +75,8 @@ function GrowthTable({
             borderCollapse: "collapse",
           }}
         >
-
           <thead>
-
             <tr style={{ background: "#EFF6FF" }}>
-
               <th
                 style={{
                   padding: "15px",
@@ -100,7 +94,7 @@ function GrowthTable({
                   color: "#0F172A",
                 }}
               >
-                Investment
+                Investment Value
               </th>
 
               <th
@@ -110,29 +104,14 @@ function GrowthTable({
                   color: "#0F172A",
                 }}
               >
-                Interest Earned
+                Returns
               </th>
-
-              <th
-                style={{
-                  padding: "15px",
-                  textAlign: "left",
-                  color: "#0F172A",
-                }}
-              >
-                Total Value
-              </th>
-
             </tr>
-
           </thead>
 
           <tbody>
-
             {rows.map((row) => (
-
               <tr key={row.year}>
-
                 <td
                   style={{
                     padding: "15px",
@@ -147,10 +126,11 @@ function GrowthTable({
                   style={{
                     padding: "15px",
                     borderBottom: "1px solid #E2E8F0",
-                    color: "#475569",
+                    color: "#2563EB",
+                    fontWeight: 600,
                   }}
                 >
-                  {formatCurrency(row.invested)}
+                  {formatCurrency(row.value)}
                 </td>
 
                 <td
@@ -163,28 +143,11 @@ function GrowthTable({
                 >
                   {formatCurrency(row.returns)}
                 </td>
-
-                <td
-                  style={{
-                    padding: "15px",
-                    borderBottom: "1px solid #E2E8F0",
-                    color: "#2563EB",
-                    fontWeight: 600,
-                  }}
-                >
-                  {formatCurrency(row.total)}
-                </td>
-
               </tr>
-
             ))}
-
           </tbody>
-
         </table>
-
       </div>
-
     </section>
   );
 }

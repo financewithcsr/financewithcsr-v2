@@ -3,32 +3,38 @@ import { useState } from "react";
 import CalculatorLayout from "../calculator/CalculatorLayout";
 import SummaryCard from "../calculator/SummaryCard";
 import InvestmentPieChart from "../calculator/PieChart";
-
 import InputSlider from "../ui/InputSlider";
 
 import GrowthChart from "./GrowthChart";
 import GrowthTable from "./GrowthTable";
+
 import LumpsumBenefits from "./LumpsumBenefits";
 import LumpsumFAQ from "./LumpsumFAQ";
-import RelatedCalculators from "../common/RelatedCalculators";
-import FinanceInsight from "../calculator/FinanceInsight";
-import CTA from "../common/CTA";
+import RelatedCalculators from "./RelatedCalculators";
 
 function LumpsumCalculator() {
   const [investment, setInvestment] = useState(100000);
   const [annualReturn, setAnnualReturn] = useState(12);
   const [years, setYears] = useState(10);
 
-  const maturityValue =
-    investment * Math.pow(1 + annualReturn / 100, years);
+  /* =========================
+     LUMPSUM CALCULATION
+  ========================= */
 
-  const investedAmount = investment;
-  const returns = maturityValue - investedAmount;
+  const totalValue =
+    investment *
+    Math.pow(1 + annualReturn / 100, years);
+
+  const returns = totalValue - investment;
 
   return (
     <CalculatorLayout
       title="Lumpsum Calculator"
-      description="Calculate the future value of your one-time investment."
+      description="Calculate the future value and estimated returns on your one-time investment."
+
+      /* =========================
+         INPUTS
+      ========================= */
 
       left={
         <>
@@ -36,19 +42,19 @@ function LumpsumCalculator() {
             label="Investment Amount"
             value={investment}
             setValue={setInvestment}
-            min={1000}
-            max={10000000}
-            step={1000}
+            min={10}
+            max={50000000}
+            step={1}
             prefix="₹ "
           />
 
           <InputSlider
-            label="Expected Annual Return"
+            label="Expected Return"
             value={annualReturn}
             setValue={setAnnualReturn}
             min={1}
             max={30}
-            step={0.5}
+            step={0.1}
             suffix="%"
           />
 
@@ -58,25 +64,34 @@ function LumpsumCalculator() {
             setValue={setYears}
             min={1}
             max={40}
+            step={1}
             suffix=" Years"
           />
         </>
       }
 
+      /* =========================
+         RESULTS
+      ========================= */
+
       right={
         <>
           <InvestmentPieChart
-            investedAmount={investedAmount}
+            investedAmount={investment}
             returns={returns}
           />
 
           <SummaryCard
-            investedAmount={investedAmount}
+            investedAmount={investment}
             returns={returns}
-            totalValue={maturityValue}
+            totalValue={totalValue}
           />
         </>
       }
+
+      /* =========================
+         GROWTH CHART + TABLE
+      ========================= */
 
       table={
         <>
@@ -91,21 +106,31 @@ function LumpsumCalculator() {
             annualReturn={annualReturn}
             years={years}
           />
-
-          <FinanceInsight
-            monthlyInvestment={investment}
-            annualReturn={annualReturn}
-            years={years}
-          />
-
-          <LumpsumBenefits />
-
-          <LumpsumFAQ />
-
-          <RelatedCalculators />
-
-          <CTA />
         </>
+      }
+
+      /* =========================
+         BENEFITS
+      ========================= */
+
+      benefits={
+        <LumpsumBenefits />
+      }
+
+      /* =========================
+         FAQ
+      ========================= */
+
+      faq={
+        <LumpsumFAQ />
+      }
+
+      /* =========================
+         RELATED CALCULATORS
+      ========================= */
+
+      related={
+        <RelatedCalculators />
       }
     />
   );

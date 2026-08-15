@@ -1,71 +1,94 @@
-import "./SummaryCard.css";
-import AnimatedNumber from "../ui/AnimatedNumber";
-import ShareResults from "./ShareResults";
-
 function SummaryCard({
-  monthlyInvestment,
-  annualReturn,
-  years,
   investedAmount,
   returns,
   totalValue,
+
+  title = "Investment Summary",
+
+  investedLabel = "Invested Amount",
+  returnsLabel = "Estimated Returns",
+  totalLabel = "Total Value",
 }) {
+  const formatCurrency = (value) => {
+    return `₹ ${Math.round(value).toLocaleString("en-IN")}`;
+  };
+
   return (
-    <div className="summary-card">
+    <div
+      style={{
+        background: "#ffffff",
+        borderRadius: "18px",
+        padding: "25px",
+        marginTop: "16px",
+        boxShadow:
+          "0 10px 25px rgba(0,0,0,0.08)",
+      }}
+    >
+      <h3
+        style={{
+          margin: "0 0 20px",
+          color: "#0F172A",
+          fontSize: "20px",
+        }}
+      >
+        {title}
+      </h3>
 
-      <h2 className="summary-title">
-        Investment Summary
-      </h2>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "20px",
+          paddingBottom: "14px",
+          borderBottom: "1px solid #E2E8F0",
+        }}
+      >
+        <span>{investedLabel}</span>
 
-      <div className="summary-box invested">
-        <div className="summary-icon">💰</div>
-
-        <div className="summary-content">
-          <span>Invested Amount</span>
-
-          <h3>
-            <AnimatedNumber value={investedAmount} />
-          </h3>
-        </div>
+        <strong>
+          {formatCurrency(investedAmount)}
+        </strong>
       </div>
 
-      <div className="summary-box returns">
-        <div className="summary-icon">📈</div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "20px",
+          padding: "14px 0",
+          borderBottom: "1px solid #E2E8F0",
+        }}
+      >
+        <span>{returnsLabel}</span>
 
-        <div className="summary-content">
-          <span>Estimated Returns</span>
-
-          <h3>
-            <AnimatedNumber value={returns} />
-          </h3>
-        </div>
+        <strong
+          style={{
+            color: "#16A34A",
+          }}
+        >
+          {formatCurrency(returns)}
+        </strong>
       </div>
 
-      <div className="summary-box total">
-        <div className="summary-icon">🏆</div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "20px",
+          paddingTop: "16px",
+        }}
+      >
+        <strong>{totalLabel}</strong>
 
-        <div className="summary-content">
-          <span>Total Value</span>
-
-          <h2>
-            <AnimatedNumber
-              value={totalValue}
-              duration={1500}
-            />
-          </h2>
-        </div>
+        <strong
+          style={{
+            color: "#2563EB",
+            fontSize: "18px",
+          }}
+        >
+          {formatCurrency(totalValue)}
+        </strong>
       </div>
-
-      <ShareResults
-        title="SIP Calculator"
-        monthlyInvestment={monthlyInvestment}
-        annualReturn={annualReturn}
-        years={years}
-        investedAmount={investedAmount}
-        returns={returns}
-        totalValue={totalValue}
-      />
-
     </div>
   );
 }

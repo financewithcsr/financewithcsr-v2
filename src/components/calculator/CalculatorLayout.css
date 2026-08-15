@@ -1,184 +1,249 @@
-.calculator-page{
-    width:100%;
-    max-width:1800px;
-    margin:40px auto 70px;
-    padding:0 24px;
+/* =========================================
+   CSL CALCULATOR PAGE
+========================================= */
+
+.csl-page {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 40px 40px 70px;
+  box-sizing: border-box;
 }
 
-/* ===========================
-   Header
-=========================== */
 
-.calculator-header{
-    text-align:center;
-    margin-bottom:45px;
+/* =========================================
+   HEADER
+========================================= */
+
+.csl-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 90px;
 }
 
-.calculator-header h1{
-    font-size:46px;
-    font-weight:800;
-    color:#0F172A;
-    margin-bottom:12px;
+.csl-header h1 {
+  margin: 0 0 12px;
+  font-size: 46px;
+  font-weight: 800;
+  color: #0f172a;
 }
 
-.calculator-header p{
-    max-width:760px;
-    margin:auto;
-    color:#64748B;
-    font-size:18px;
-    line-height:1.7;
+.csl-header p {
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* ===========================
-   Main Layout
-=========================== */
 
-.calculator-main{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    gap:40px;
-    align-items:start;
+/* =========================================
+   MAIN 3-COLUMN LAYOUT
+
+   ① SIDEBAR
+   ② INPUTS
+   ③ RESULTS
+========================================= */
+
+.csl-main {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    193px
+    594px
+    307px;
+
+  gap: 33px;
+
+  align-items: start;
 }
 
-/* ===========================
-   Content
-=========================== */
 
-.calculator-content{
-    width:100%;
+/* =========================================
+   ① SIDEBAR
+========================================= */
+
+.csl-sidebar {
+  width: 193px;
+  min-width: 0;
 }
 
-/* ===========================
-   Calculator Area
-=========================== */
 
-.calculator-grid{
-    display:grid;
+/* =========================================
+   ② MIDDLE / INPUTS
+========================================= */
 
-    /* LEFT SIDE gets all remaining width */
-    grid-template-columns:1fr 430px;
+.csl-middle {
+  width: 594px;
+  min-width: 0;
 
-    gap:40px;
+  display: flex;
+  flex-direction: column;
 
-    align-items:start;
-
-    width:100%;
+  gap: 50px;
 }
 
-/* Left */
+.csl-inputs {
+  width: 100%;
 
-.calculator-left{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    gap:28px;
+  display: flex;
+  flex-direction: column;
+
+  gap: 34px;
 }
 
-/* Right */
 
-.calculator-right{
-    width:430px;
-    min-width:430px;
-    display:flex;
-    flex-direction:column;
-    gap:24px;
-    position:sticky;
-    top:90px;
+/* =========================================
+   GROWTH
+========================================= */
+
+.csl-growth {
+  width: 100%;
+  min-width: 0;
 }
 
-/* ===========================
-   Sections
-=========================== */
 
-.calculator-section{
-    width:100%;
-    margin-top:45px;
+/* =========================================
+   ③ RESULTS
+========================================= */
+
+.csl-results {
+  width: 307px;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  position: sticky;
+  top: 90px;
 }
 
-/* ===========================
-   Large Monitor
-=========================== */
 
-@media (min-width:1700px){
+/* =========================================
+   LOWER CONTENT
+========================================= */
 
-.calculator-page{
-    max-width:1900px;
+.csl-section {
+  width: 1160px;
+  max-width: calc(100% - 48px);
+
+  margin: 50px auto 0;
 }
 
-.calculator-main{
-    grid-template-columns:300px 1fr;
+
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width: 1500px) {
+
+  .csl-main {
+    max-width: 1280px;
+
+    grid-template-columns:
+      220px
+      minmax(0, 1fr)
+      340px;
+
+    gap: 40px;
+  }
+
+  .csl-sidebar {
+    width: 220px;
+  }
+
+  .csl-middle {
+    width: 100%;
+  }
+
+  .csl-results {
+    width: 340px;
+  }
+
+  .csl-section {
+    width: 1280px;
+  }
 }
 
-.calculator-grid{
-    grid-template-columns:1fr 460px;
+
+/* =========================================
+   LAPTOP
+========================================= */
+
+@media (max-width: 1200px) {
+
+  .csl-main {
+    max-width: 100%;
+
+    grid-template-columns:
+      190px
+      minmax(0, 1fr)
+      300px;
+
+    gap: 25px;
+  }
+
+  .csl-sidebar {
+    width: 190px;
+  }
+
+  .csl-middle {
+    width: 100%;
+  }
+
+  .csl-results {
+    width: 300px;
+  }
 }
 
-.calculator-right{
-    width:460px;
-    min-width:460px;
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .csl-main {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .csl-sidebar,
+  .csl-middle,
+  .csl-results {
+    width: 100%;
+  }
+
+  .csl-results {
+    position: static;
+  }
 }
 
-}
 
-/* ===========================
-   Laptop
-=========================== */
+/* =========================================
+   MOBILE
+========================================= */
 
-@media (max-width:1400px){
+@media (max-width: 768px) {
 
-.calculator-main{
-    grid-template-columns:260px 1fr;
-}
+  .csl-page {
+    padding: 25px 16px 50px;
+  }
 
-.calculator-grid{
-    grid-template-columns:1fr 390px;
-}
+  .csl-header {
+    margin-bottom: 40px;
+  }
 
-.calculator-right{
-    width:390px;
-    min-width:390px;
-}
+  .csl-header h1 {
+    font-size: 34px;
+  }
 
-}
-
-/* ===========================
-   Tablet
-=========================== */
-
-@media (max-width:1100px){
-
-.calculator-main{
-    grid-template-columns:1fr;
-}
-
-.calculator-grid{
-    grid-template-columns:1fr;
-}
-
-.calculator-right{
-    width:100%;
-    min-width:100%;
-    position:static;
-}
-
-}
-
-/* ===========================
-   Mobile
-=========================== */
-
-@media (max-width:768px){
-
-.calculator-page{
-    padding:0 16px;
-}
-
-.calculator-header h1{
-    font-size:34px;
-}
-
-.calculator-header p{
-    font-size:16px;
-}
-
+  .csl-header p {
+    font-size: 15px;
+  }
 }

@@ -1,68 +1,64 @@
-import "../calculators/SIPBenefits.css";
-
-const benefits = [
-  {
-    icon: "💰",
-    title: "One-Time Investment",
-    description:
-      "Invest once and let your money grow over time without making monthly contributions.",
-  },
-  {
-    icon: "📈",
-    title: "Power of Compounding",
-    description:
-      "Your investment earns returns, and those returns continue generating additional returns over the years.",
-  },
-  {
-    icon: "⏳",
-    title: "Long-Term Wealth Creation",
-    description:
-      "A lumpsum investment can create significant wealth when invested for the long term.",
-  },
-  {
-    icon: "🎯",
-    title: "Ideal for Bonus or Windfall",
-    description:
-      "Perfect for investing bonuses, inheritance, maturity proceeds, or any surplus funds.",
-  },
-  {
-    icon: "📊",
-    title: "Simple Investment",
-    description:
-      "No monthly commitments. Invest once and monitor your portfolio periodically.",
-  },
-  {
-    icon: "🚀",
-    title: "Potential for Higher Returns",
-    description:
-      "If invested wisely in suitable instruments, lumpsum investments can generate attractive long-term returns.",
-  },
-];
+import "./LumpsumBenefits.css";
 
 function LumpsumBenefits() {
+  const benefits = [
+    {
+      icon: "💰",
+      title: "One-Time Investment",
+      description:
+        "Invest a lump sum amount once and allow your money to grow over time.",
+    },
+    {
+      icon: "📈",
+      title: "Compounding Growth",
+      description:
+        "Your investment can benefit from the power of compounding over a longer period.",
+    },
+    {
+      icon: "🎯",
+      title: "Goal Planning",
+      description:
+        "Estimate how your one-time investment can grow towards your financial goals.",
+    },
+    {
+      icon: "⏳",
+      title: "Long-Term Wealth",
+      description:
+        "Staying invested for a longer period can help you build a larger investment corpus.",
+    },
+  ];
+
   return (
-    <section className="benefits">
-      <div className="container">
-        <h2>Why Choose a Lumpsum Investment?</h2>
+    <section className="lumpsum-benefits">
+
+      <div className="lumpsum-benefits-header">
+        <h2>Benefits of Lumpsum Investing</h2>
 
         <p>
-          A one-time investment is ideal for investors who have surplus money
-          and want to maximize long-term wealth through the power of
-          compounding.
+          Understand how a one-time investment can help you plan and grow
+          your wealth over the long term.
         </p>
-
-        <div className="benefit-grid">
-          {benefits.map((benefit, index) => (
-            <div className="benefit-card" key={index}>
-              <h3>
-                {benefit.icon} {benefit.title}
-              </h3>
-
-              <p>{benefit.description}</p>
-            </div>
-          ))}
-        </div>
       </div>
+
+      <div className="lumpsum-benefits-grid">
+
+        {benefits.map((benefit) => (
+          <div
+            className="lumpsum-benefit-card"
+            key={benefit.title}
+          >
+            <div className="lumpsum-benefit-icon">
+              {benefit.icon}
+            </div>
+
+            <h3>{benefit.title}</h3>
+
+            <p>{benefit.description}</p>
+          </div>
+        ))}
+
+      </div>
+
     </section>
   );
 }

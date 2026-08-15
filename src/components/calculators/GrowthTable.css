@@ -1,58 +1,154 @@
 .growth-table {
-  margin-top: 50px;
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 35px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  overflow-x: auto;
+    width: 100%;
+    margin-top: 45px;
+
+    background: #ffffff;
+
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+
+    overflow: hidden;
 }
 
-.growth-table h2 {
-  margin-bottom: 25px;
-  color: #0f172a;
-  font-size: 28px;
+/* =========================
+   HEADER
+========================= */
+
+.growth-table-header {
+    margin-bottom: 25px;
 }
+
+.growth-table-header h2 {
+    margin: 0 0 8px;
+
+    color: #0F172A;
+
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.growth-table-header p {
+    margin: 0;
+
+    color: #64748B;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+
+.growth-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* =========================
+   TABLE
+========================= */
 
 .growth-table table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    min-width: 700px;
+
+    border-collapse: collapse;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .growth-table thead {
-  background: #2563eb;
+    background: #2563EB;
 }
 
 .growth-table th {
-  color: #ffffff;
-  padding: 16px;
-  text-align: left;
-  font-size: 15px;
+    padding: 16px 18px;
+
+    color: #FFFFFF;
+
+    text-align: left;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
 }
 
+/* =========================
+   BODY
+========================= */
+
 .growth-table td {
-  padding: 16px;
-  border-bottom: 1px solid #e2e8f0;
-  color: #334155;
+    padding: 16px 18px;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #E2E8F0;
+
+    white-space: nowrap;
+}
+
+.growth-table tbody tr {
+    transition: background 0.2s ease;
 }
 
 .growth-table tbody tr:hover {
-  background: #f8fafc;
+    background: #F8FAFC;
 }
 
 .growth-table tbody tr:last-child td {
-  border-bottom: none;
+    border-bottom: none;
 }
 
-@media (max-width: 900px) {
-  .growth-table {
-    padding: 25px;
-  }
+/* =========================
+   RETURNS
+========================= */
 
-  .growth-table h2 {
-    font-size: 24px;
-  }
+.growth-table .returns-value {
+    color: #16A34A;
+    font-weight: 600;
+}
 
-  .growth-table table {
-    min-width: 700px;
-  }
+/* =========================
+   TOTAL
+========================= */
+
+.growth-table .total-value {
+    color: #0F172A;
+    font-weight: 700;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .growth-table {
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    .growth-table-header h2 {
+        font-size: 23px;
+    }
+
+    .growth-table-header p {
+        font-size: 14px;
+    }
+
+    .growth-table th,
+    .growth-table td {
+        padding: 14px;
+    }
+
 }

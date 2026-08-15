@@ -8,18 +8,18 @@ function RelatedCalculators() {
       path: "/loans/emi",
     },
     {
+      icon: "🏠",
+      title: "Home Loan Calculator",
+      description:
+        "Calculate your home loan EMI and total interest payable.",
+      path: "/loans/home-loan",
+    },
+    {
       icon: "🚗",
       title: "Car Loan Calculator",
       description:
         "Calculate your car loan EMI, interest and repayment.",
       path: "/loans/car-loan",
-    },
-    {
-      icon: "💼",
-      title: "Personal Loan Calculator",
-      description:
-        "Calculate your personal loan EMI and total interest.",
-      path: "/loans/personal-loan",
     },
     {
       icon: "📈",

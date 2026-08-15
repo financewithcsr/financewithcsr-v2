@@ -7,59 +7,87 @@ function CalculatorLayout({
   left,
   right,
   table,
+  benefits,
   faq,
   related,
 }) {
   return (
-    <main className="calculator-page">
+    <main className="csl-page">
 
-      <header className="calculator-header">
+      {/* =========================
+          HEADER
+      ========================= */}
+
+      <header className="csl-header">
         <h1>{title}</h1>
-
         <p>{description}</p>
       </header>
 
-      <section className="calculator-main">
+      {/* =========================
+          MAIN 3-COLUMN LAYOUT
+      ========================= */}
 
-        <aside>
+      <section className="csl-main">
+
+        {/* COLUMN 1 — SIDEBAR */}
+
+        <aside className="csl-sidebar">
           <CalculatorSidebar />
         </aside>
 
-        <div className="calculator-content">
+        {/* COLUMN 2 — INPUTS + GROWTH */}
 
-          <div className="calculator-grid">
+        <section className="csl-middle">
 
-            <section className="calculator-left">
-              {left}
-            </section>
-
-            <aside className="calculator-right">
-              {right}
-            </aside>
-
+          <div className="csl-inputs">
+            {left}
           </div>
 
           {table && (
-            <section className="calculator-section">
+            <div className="csl-growth">
               {table}
-            </section>
+            </div>
           )}
 
-          {faq && (
-            <section className="calculator-section">
-              {faq}
-            </section>
-          )}
+        </section>
 
-          {related && (
-            <section className="calculator-section">
-              {related}
-            </section>
-          )}
+        {/* COLUMN 3 — RESULTS */}
 
-        </div>
+        <aside className="csl-results">
+          {right}
+        </aside>
 
       </section>
+
+      {/* =========================
+          BENEFITS
+      ========================= */}
+
+      {benefits && (
+        <section className="csl-section">
+          {benefits}
+        </section>
+      )}
+
+      {/* =========================
+          FAQ
+      ========================= */}
+
+      {faq && (
+        <section className="csl-section">
+          {faq}
+        </section>
+      )}
+
+      {/* =========================
+          RELATED CALCULATORS
+      ========================= */}
+
+      {related && (
+        <section className="csl-section">
+          {related}
+        </section>
+      )}
 
     </main>
   );

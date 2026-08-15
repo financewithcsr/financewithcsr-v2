@@ -9,27 +9,22 @@ import {
   Legend,
 } from "recharts";
 
-import "../calculators/GrowthChart.css";
-
 function GrowthChart({
-  investment,
-  annualReturn,
+  deposit,
+  interestRate,
   years,
 }) {
   const data = [];
 
   for (let year = 1; year <= years; year++) {
-    const totalValue =
-      investment *
-      Math.pow(1 + annualReturn / 100, year);
-
-    const returns = totalValue - investment;
+    const maturityValue =
+      deposit *
+      Math.pow(1 + interestRate / 100, year);
 
     data.push({
       year,
-      invested: Math.round(investment),
-      value: Math.round(totalValue),
-      returns: Math.round(returns),
+      deposit: Math.round(deposit),
+      maturity: Math.round(maturityValue),
     });
   }
 
@@ -54,22 +49,38 @@ function GrowthChart({
   };
 
   return (
-    <div className="growth-chart">
+    <div
+      style={{
+        width: "100%",
+        background: "#ffffff",
+        border: "1px solid #E2E8F0",
+        borderRadius: "20px",
+        padding: "28px",
+        boxSizing: "border-box",
+        boxShadow: "0 8px 24px rgba(15, 23, 42, 0.06)",
+      }}
+    >
+      <h2
+        style={{
+          margin: "0 0 20px",
+          textAlign: "center",
+          fontSize: "26px",
+          color: "#0F172A",
+        }}
+      >
+        FD Investment Growth
+      </h2>
 
-      <h2>Investment Growth</h2>
-
-      <ResponsiveContainer width="100%" height={250}>
-
+      <ResponsiveContainer width="100%" height={280}>
         <LineChart
           data={data}
           margin={{
             top: 10,
             right: 20,
-            left: 15,
-            bottom: 5,
+            left: 10,
+            bottom: 10,
           }}
         >
-
           <CartesianGrid
             strokeDasharray="3 3"
             vertical={false}
@@ -82,23 +93,27 @@ function GrowthChart({
 
           <YAxis
             tickFormatter={formatYAxis}
-            width={75}
+            width={65}
           />
 
           <Tooltip
             formatter={(value, name) => [
               formatCurrency(value),
-              name,
+              name === "maturity"
+                ? "Maturity Value"
+                : "Deposit Amount",
             ]}
-            labelFormatter={(year) => `Year ${year}`}
+            labelFormatter={(year) =>
+              `Year ${year}`
+            }
           />
 
           <Legend />
 
           <Line
             type="monotone"
-            dataKey="invested"
-            name="Invested Amount"
+            dataKey="deposit"
+            name="Deposit Amount"
             stroke="#94A3B8"
             strokeWidth={3}
             dot={false}
@@ -106,17 +121,14 @@ function GrowthChart({
 
           <Line
             type="monotone"
-            dataKey="value"
-            name="Total Value"
+            dataKey="maturity"
+            name="Maturity Value"
             stroke="#2563EB"
             strokeWidth={4}
             dot={false}
           />
-
         </LineChart>
-
       </ResponsiveContainer>
-
     </div>
   );
 }

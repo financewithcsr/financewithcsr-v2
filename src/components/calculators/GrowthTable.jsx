@@ -4,85 +4,119 @@ function GrowthTable({
   monthlyInvestment,
   annualReturn,
   years,
+  stepUp = 0,
 }) {
   const rows = [];
 
   const monthlyRate = annualReturn / 12 / 100;
 
+  let investedAmount = 0;
+  let totalValue = 0;
+
   for (let year = 1; year <= years; year++) {
-    const months = year * 12;
 
-    const invested = monthlyInvestment * months;
+    // SIP amount for the current year
+    const yearlyMonthlyInvestment =
+      monthlyInvestment *
+      Math.pow(1 + stepUp / 100, year - 1);
 
-    const maturity =
-      monthlyRate === 0
-        ? invested
-        : monthlyInvestment *
-          (((Math.pow(1 + monthlyRate, months) - 1) /
-            monthlyRate) *
-            (1 + monthlyRate));
+    // Calculate each month's investment
+    for (let month = 1; month <= 12; month++) {
+
+      investedAmount += yearlyMonthlyInvestment;
+
+      totalValue =
+        (totalValue + yearlyMonthlyInvestment) *
+        (1 + monthlyRate);
+    }
+
+    const returns = totalValue - investedAmount;
 
     rows.push({
       year,
-      invested,
-      returns: maturity - invested,
-      total: maturity,
+      monthlyInvestment: yearlyMonthlyInvestment,
+      invested: investedAmount,
+      returns,
+      totalValue,
     });
   }
 
+  const formatCurrency = (value) => {
+    return `₹ ${Math.round(value).toLocaleString("en-IN")}`;
+  };
+
   return (
-    <div className="growth-table">
+    <section className="growth-table">
 
-      <h2>Year-wise Investment Growth</h2>
+      <div className="growth-table-header">
 
-      <table>
+        <h2>
+          Year-wise Investment Growth
+        </h2>
 
-        <thead>
+        <p>
+          See how your SIP investment can grow year by year.
+        </p>
 
-          <tr>
-            <th>Year</th>
-            <th>Invested Amount</th>
-            <th>Returns</th>
-            <th>Total Value</th>
-          </tr>
+      </div>
 
-        </thead>
+      <div className="growth-table-wrapper">
 
-        <tbody>
+        <table>
 
-          {rows.map((row) => (
+          <thead>
 
-            <tr key={row.year}>
+            <tr>
+              <th>Year</th>
 
-              <td>{row.year}</td>
+              <th>Monthly SIP</th>
 
-              <td>
-                ₹ {row.invested.toLocaleString("en-IN")}
-              </td>
+              <th>Invested Amount</th>
 
-              <td style={{ color: "#16A34A" }}>
-                ₹{" "}
-                {row.returns.toLocaleString("en-IN", {
-                  maximumFractionDigits: 0,
-                })}
-              </td>
+              <th>Estimated Returns</th>
 
-              <td style={{ fontWeight: 600 }}>
-                ₹{" "}
-                {row.total.toLocaleString("en-IN", {
-                  maximumFractionDigits: 0,
-                })}
-              </td>
-
+              <th>Total Value</th>
             </tr>
 
-          ))}
+          </thead>
 
-        </tbody>
+          <tbody>
 
-      </table>
+            {rows.map((row) => (
 
-    </div>
+              <tr key={row.year}>
+
+                <td>
+                  Year {row.year}
+                </td>
+
+                <td>
+                  {formatCurrency(row.monthlyInvestment)}
+                </td>
+
+                <td>
+                  {formatCurrency(row.invested)}
+                </td>
+
+                <td className="returns-value">
+                  {formatCurrency(row.returns)}
+                </td>
+
+                <td className="total-value">
+                  {formatCurrency(row.totalValue)}
+                </td>
+
+              </tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
   );
 }
 

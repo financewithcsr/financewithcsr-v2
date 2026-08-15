@@ -1,0 +1,82 @@
+.lumpsum-faq {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.lumpsum-faq-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.lumpsum-faq-header h2 {
+  margin: 0 0 12px;
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.lumpsum-faq-header p {
+  color: #64748b;
+  margin: 0;
+  font-size: 16px;
+}
+
+.lumpsum-faq-list {
+  max-width: 900px;
+  margin: auto;
+}
+
+.lumpsum-faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.lumpsum-faq-question {
+  width: 100%;
+  border: none;
+  background: #ffffff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: left;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.lumpsum-faq-question:hover {
+  background: #f8fafc;
+}
+
+.lumpsum-faq-icon {
+  color: #2563eb;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.lumpsum-faq-answer {
+  padding: 0 20px 20px;
+}
+
+.lumpsum-faq-answer p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .lumpsum-faq {
+    padding: 25px;
+  }
+
+  .lumpsum-faq-header h2 {
+    font-size: 25px;
+  }
+}

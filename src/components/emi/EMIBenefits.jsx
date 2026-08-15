@@ -1,34 +1,34 @@
-function HomeLoanBenefits() {
+function EMIBenefits() {
   const benefits = [
     {
-      icon: "🏠",
-      title: "Plan Your Home Purchase",
-      text: "Estimate your monthly EMI before choosing a home loan and understand whether the repayment fits your budget.",
-    },
-    {
       icon: "💰",
-      title: "Understand Total Interest",
-      text: "See how much interest you may pay over the complete home loan tenure in addition to the principal amount.",
+      title: "Plan Your Monthly Budget",
+      text: "Know your EMI in advance and understand how much of your monthly income will go towards loan repayment.",
     },
     {
       icon: "📊",
-      title: "Compare Loan Scenarios",
-      text: "Change the loan amount, interest rate and tenure to compare different home loan repayment scenarios.",
+      title: "Understand Total Interest",
+      text: "See how much interest you will pay over the entire loan tenure, not just the monthly EMI.",
+    },
+    {
+      icon: "🏦",
+      title: "Compare Loan Options",
+      text: "Change the loan amount, interest rate and tenure to compare different borrowing scenarios.",
     },
     {
       icon: "⏳",
       title: "Choose the Right Tenure",
-      text: "A longer tenure can reduce your monthly EMI, while a shorter tenure can help reduce the total interest paid.",
+      text: "A longer tenure can reduce your EMI but may increase the total interest paid over the loan period.",
     },
     {
-      icon: "🏦",
-      title: "Plan Your Borrowing",
-      text: "Understand the overall cost of borrowing before finalising your home loan amount and repayment period.",
+      icon: "💡",
+      title: "Make Better Decisions",
+      text: "Use the calculator before taking a loan to understand the actual cost of borrowing.",
     },
     {
       icon: "🎯",
       title: "Plan Prepayments",
-      text: "Understanding your outstanding loan balance can help you plan eligible part-prepayments more effectively.",
+      text: "Understanding your outstanding balance can help you plan future loan prepayments more effectively.",
     },
   ];
 
@@ -38,8 +38,7 @@ function HomeLoanBenefits() {
         background: "#ffffff",
         borderRadius: "18px",
         padding: "30px",
-        boxShadow:
-          "0 10px 25px rgba(0,0,0,0.08)",
+        boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
       }}
     >
       <h2
@@ -49,7 +48,7 @@ function HomeLoanBenefits() {
           fontSize: "28px",
         }}
       >
-        Benefits of Using a Home Loan Calculator
+        Benefits of Using an EMI Calculator
       </h2>
 
       <p
@@ -59,16 +58,14 @@ function HomeLoanBenefits() {
           lineHeight: 1.6,
         }}
       >
-        A Home Loan Calculator helps you understand
-        the cost of borrowing and plan your home loan
-        repayment before making a decision.
+        An EMI calculator helps you understand your
+        loan repayment before you commit to a loan.
       </p>
 
       <div
         style={{
           display: "grid",
-          gridTemplateColumns:
-            "repeat(2, minmax(0, 1fr))",
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
           gap: "18px",
         }}
       >
@@ -118,4 +115,4 @@ function HomeLoanBenefits() {
   );
 }
 
-export default HomeLoanBenefits;
+export default EMIBenefits;

@@ -10,7 +10,7 @@ import {
 } from "recharts";
 
 function GrowthChart({
-  monthlyDeposit,
+  loanAmount,
   interestRate,
   years,
 }) {
@@ -19,27 +19,57 @@ function GrowthChart({
   const monthlyRate =
     interestRate / 12 / 100;
 
-  for (let year = 1; year <= years; year++) {
-    const months = year * 12;
+  const months =
+    years * 12;
 
-    const invested =
-      monthlyDeposit * months;
+  const emi =
+    monthlyRate === 0
+      ? loanAmount / months
+      : (
+          loanAmount *
+          monthlyRate *
+          Math.pow(
+            1 + monthlyRate,
+            months
+          )
+        ) /
+        (
+          Math.pow(
+            1 + monthlyRate,
+            months
+          ) - 1
+        );
 
-    const maturity =
+  let balance = loanAmount;
+  let totalPrincipal = 0;
+  let totalInterest = 0;
+
+  for (let month = 1; month <= months; month++) {
+    const interest =
       monthlyRate === 0
-        ? invested
-        : monthlyDeposit *
-          (
-            (Math.pow(1 + monthlyRate, months) - 1) /
-            monthlyRate
-          ) *
-          (1 + monthlyRate);
+        ? 0
+        : balance * monthlyRate;
 
-    data.push({
-      year,
-      invested: Math.round(invested),
-      maturity: Math.round(maturity),
-    });
+    const principal =
+      emi - interest;
+
+    balance -= principal;
+
+    if (balance < 0) {
+      balance = 0;
+    }
+
+    totalPrincipal += principal;
+    totalInterest += interest;
+
+    if (month % 12 === 0 || month === months) {
+      data.push({
+        year: Math.ceil(month / 12),
+        principal: Math.round(totalPrincipal),
+        interest: Math.round(totalInterest),
+        balance: Math.round(balance),
+      });
+    }
   }
 
   const formatYAxis = (value) => {
@@ -71,7 +101,8 @@ function GrowthChart({
         borderRadius: "20px",
         padding: "28px",
         boxSizing: "border-box",
-        boxShadow: "0 8px 24px rgba(15, 23, 42, 0.06)",
+        boxShadow:
+          "0 8px 24px rgba(15, 23, 42, 0.06)",
       }}
     >
       <h2
@@ -82,7 +113,7 @@ function GrowthChart({
           color: "#0F172A",
         }}
       >
-        RD Investment Growth
+        Loan Repayment Growth
       </h2>
 
       <ResponsiveContainer width="100%" height={280}>
@@ -102,7 +133,9 @@ function GrowthChart({
 
           <XAxis
             dataKey="year"
-            tickFormatter={(year) => `${year}`}
+            tickFormatter={(year) =>
+              `Year ${year}`
+            }
           />
 
           <YAxis
@@ -113,9 +146,11 @@ function GrowthChart({
           <Tooltip
             formatter={(value, name) => [
               formatCurrency(value),
-              name === "maturity"
-                ? "Maturity Value"
-                : "Invested Amount",
+              name === "principal"
+                ? "Principal Repaid"
+                : name === "interest"
+                ? "Interest Paid"
+                : "Outstanding Balance",
             ]}
             labelFormatter={(year) =>
               `Year ${year}`
@@ -126,8 +161,17 @@ function GrowthChart({
 
           <Line
             type="monotone"
-            dataKey="invested"
-            name="Invested Amount"
+            dataKey="principal"
+            name="Principal Repaid"
+            stroke="#2563EB"
+            strokeWidth={4}
+            dot={false}
+          />
+
+          <Line
+            type="monotone"
+            dataKey="interest"
+            name="Interest Paid"
             stroke="#94A3B8"
             strokeWidth={3}
             dot={false}
@@ -135,10 +179,10 @@ function GrowthChart({
 
           <Line
             type="monotone"
-            dataKey="maturity"
-            name="Maturity Value"
-            stroke="#2563EB"
-            strokeWidth={4}
+            dataKey="balance"
+            name="Outstanding Balance"
+            stroke="#16A34A"
+            strokeWidth={3}
             dot={false}
           />
         </LineChart>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import CalculatorLayout from "../calculator/CalculatorLayout";
 import SummaryCard from "../calculator/SummaryCard";
 import InvestmentPieChart from "../calculator/PieChart";
-
 import InputSlider from "../ui/InputSlider";
 
 import GrowthChart from "./GrowthChart";
@@ -17,24 +16,39 @@ function RDCalculator() {
   const [interestRate, setInterestRate] = useState(7);
   const [years, setYears] = useState(5);
 
-  const months = years * 12;
-  const monthlyRate = interestRate / 12 / 100;
+  /* =========================
+     RD CALCULATION
+  ========================= */
 
-  const investedAmount = monthlyDeposit * months;
+  const months = years * 12;
+
+  const monthlyRate =
+    interestRate / 12 / 100;
+
+  const investedAmount =
+    monthlyDeposit * months;
 
   const maturityAmount =
     monthlyRate === 0
       ? investedAmount
       : monthlyDeposit *
-        ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) *
+        (
+          (Math.pow(1 + monthlyRate, months) - 1) /
+          monthlyRate
+        ) *
         (1 + monthlyRate);
 
-  const interestEarned = maturityAmount - investedAmount;
+  const interestEarned =
+    maturityAmount - investedAmount;
 
   return (
     <CalculatorLayout
       title="RD Calculator"
       description="Calculate your Recurring Deposit maturity amount, total interest earned, and total investment."
+
+      /* =========================
+         INPUTS
+      ========================= */
 
       left={
         <>
@@ -70,6 +84,10 @@ function RDCalculator() {
         </>
       }
 
+      /* =========================
+         RESULTS
+      ========================= */
+
       right={
         <>
           <InvestmentPieChart
@@ -82,42 +100,24 @@ function RDCalculator() {
             returns={interestEarned}
             totalValue={maturityAmount}
           />
-
-          <div
-            style={{
-              marginTop: "20px",
-              background: "#fff",
-              borderRadius: "18px",
-              padding: "25px",
-              textAlign: "center",
-              boxShadow: "0 10px 25px rgba(0,0,0,.08)",
-            }}
-          >
-            <h3>Maturity Amount</h3>
-
-            <h1
-              style={{
-                color: "#2563EB",
-                marginTop: "10px",
-              }}
-            >
-              ₹ {Math.round(maturityAmount).toLocaleString("en-IN")}
-            </h1>
-          </div>
         </>
       }
+
+      /* =========================
+         GROWTH CHART + TABLE
+      ========================= */
 
       table={
         <>
           <GrowthChart
-            investment={monthlyDeposit}
-            annualReturn={interestRate}
+            monthlyDeposit={monthlyDeposit}
+            interestRate={interestRate}
             years={years}
           />
 
           <GrowthTable
-            investment={monthlyDeposit}
-            annualReturn={interestRate}
+            monthlyDeposit={monthlyDeposit}
+            interestRate={interestRate}
             years={years}
           />
 

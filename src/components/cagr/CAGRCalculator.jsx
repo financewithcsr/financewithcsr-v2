@@ -5,6 +5,9 @@ import SummaryCard from "../calculator/SummaryCard";
 import InvestmentPieChart from "../calculator/PieChart";
 import InputSlider from "../ui/InputSlider";
 
+import GrowthChart from "./GrowthChart";
+import GrowthTable from "./GrowthTable";
+
 import CAGRBenefits from "./CAGRBenefits";
 import CAGRFAQ from "./CAGRFAQ";
 import RelatedCalculators from "../common/RelatedCalculators";
@@ -15,91 +18,145 @@ function CAGRCalculator() {
   const [finalValue, setFinalValue] = useState(200000);
   const [years, setYears] = useState(5);
 
-  const cagr =
-    (Math.pow(finalValue / initialValue, 1 / years) - 1) * 100;
+  /* =========================
+     CAGR CALCULATION
+  ========================= */
 
-  const returns = finalValue - initialValue;
+  const cagr =
+    initialValue > 0 && years > 0
+      ? (
+          Math.pow(
+            finalValue / initialValue,
+            1 / years
+          ) - 1
+        ) * 100
+      : 0;
+
+  const returns =
+    finalValue - initialValue;
 
   return (
-    <>
-      <CalculatorLayout
-        title="CAGR Calculator"
-        description="Calculate the Compound Annual Growth Rate (CAGR) of your investment."
+    <CalculatorLayout
+      title="CAGR Calculator"
+      description="Calculate the Compound Annual Growth Rate (CAGR) of your investment."
 
-        left={
-          <>
-            <InputSlider
-              label="Initial Investment"
-              value={initialValue}
-              setValue={setInitialValue}
-              min={1000}
-              max={10000000}
-              step={1000}
-              prefix="₹ "
-            />
+      /* =========================
+         INPUTS
+      ========================= */
 
-            <InputSlider
-              label="Final Value"
-              value={finalValue}
-              setValue={setFinalValue}
-              min={1000}
-              max={50000000}
-              step={1000}
-              prefix="₹ "
-            />
+      left={
+        <>
+          <InputSlider
+            label="Initial Investment"
+            value={initialValue}
+            setValue={setInitialValue}
+            min={10}
+            max={10000000}
+            step={1}
+            prefix="₹ "
+          />
 
-            <InputSlider
-              label="Investment Period"
-              value={years}
-              setValue={setYears}
-              min={1}
-              max={40}
-              suffix=" Years"
-            />
-          </>
-        }
+          <InputSlider
+            label="Final Value"
+            value={finalValue}
+            setValue={setFinalValue}
+            min={10}
+            max={50000000}
+            step={1}
+            prefix="₹ "
+          />
 
-        right={
-          <>
-            <InvestmentPieChart
-              investedAmount={initialValue}
-              returns={returns}
-            />
+          <InputSlider
+            label="Investment Period"
+            value={years}
+            setValue={setYears}
+            min={1}
+            max={40}
+            step={1}
+            suffix=" Years"
+          />
+        </>
+      }
 
-            <SummaryCard
-              investedAmount={initialValue}
-              returns={returns}
-              totalValue={finalValue}
-            />
+      /* =========================
+         RESULTS
+      ========================= */
 
-            <div
+      right={
+        <>
+          <InvestmentPieChart
+            investedAmount={initialValue}
+            returns={returns}
+          />
+
+          <SummaryCard
+            investedAmount={initialValue}
+            returns={returns}
+            totalValue={finalValue}
+          />
+
+          <div
+            style={{
+              background: "#ffffff",
+              padding: "25px",
+              borderRadius: "18px",
+              marginTop: "4px",
+              boxShadow:
+                "0 10px 25px rgba(0,0,0,0.08)",
+              textAlign: "center",
+            }}
+          >
+            <h3
               style={{
-                background: "#fff",
-                padding: "25px",
-                borderRadius: "18px",
-                marginTop: "20px",
-                boxShadow: "0 10px 25px rgba(0,0,0,.08)",
-                textAlign: "center",
+                margin: 0,
+                color: "#0F172A",
+                fontSize: "18px",
               }}
             >
-              <h3>Compound Annual Growth Rate</h3>
+              Compound Annual Growth Rate
+            </h3>
 
-              <h1 style={{ color: "#2563EB" }}>
-                {cagr.toFixed(2)}%
-              </h1>
-            </div>
-          </>
-        }
-      />
+            <h1
+              style={{
+                color: "#2563EB",
+                margin: "12px 0 0",
+                fontSize: "36px",
+              }}
+            >
+              {cagr.toFixed(2)}%
+            </h1>
+          </div>
+        </>
+      }
 
-      <CAGRBenefits />
+      /* =========================
+         GROWTH CHART + TABLE
+      ========================= */
 
-      <CAGRFAQ />
+      table={
+        <>
+          <GrowthChart
+            initialValue={initialValue}
+            finalValue={finalValue}
+            years={years}
+          />
 
-      <RelatedCalculators />
+          <GrowthTable
+            initialValue={initialValue}
+            finalValue={finalValue}
+            years={years}
+          />
 
-      <CTA />
-    </>
+          <CAGRBenefits />
+
+          <CAGRFAQ />
+
+          <RelatedCalculators />
+
+          <CTA />
+        </>
+      }
+    />
   );
 }
 

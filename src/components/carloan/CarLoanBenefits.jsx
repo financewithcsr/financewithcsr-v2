@@ -1,34 +1,34 @@
-function HomeLoanBenefits() {
+function CarLoanBenefits() {
   const benefits = [
     {
-      icon: "🏠",
-      title: "Plan Your Home Purchase",
-      text: "Estimate your monthly EMI before choosing a home loan and understand whether the repayment fits your budget.",
+      icon: "🚗",
+      title: "Plan Your Car Purchase",
+      text: "Estimate your monthly EMI before buying a car and check whether the repayment fits comfortably within your budget.",
     },
     {
       icon: "💰",
       title: "Understand Total Interest",
-      text: "See how much interest you may pay over the complete home loan tenure in addition to the principal amount.",
+      text: "See how much interest you may pay over the complete car loan tenure in addition to the principal amount.",
     },
     {
       icon: "📊",
-      title: "Compare Loan Scenarios",
-      text: "Change the loan amount, interest rate and tenure to compare different home loan repayment scenarios.",
+      title: "Compare Loan Options",
+      text: "Change the loan amount, interest rate and tenure to compare different car loan repayment scenarios.",
     },
     {
       icon: "⏳",
       title: "Choose the Right Tenure",
-      text: "A longer tenure can reduce your monthly EMI, while a shorter tenure can help reduce the total interest paid.",
+      text: "A longer tenure can reduce your monthly EMI, while a shorter tenure can help reduce the overall interest cost.",
     },
     {
       icon: "🏦",
-      title: "Plan Your Borrowing",
-      text: "Understand the overall cost of borrowing before finalising your home loan amount and repayment period.",
+      title: "Plan Your Down Payment",
+      text: "Use the calculator to understand how your loan amount affects your EMI and plan your upfront contribution accordingly.",
     },
     {
       icon: "🎯",
       title: "Plan Prepayments",
-      text: "Understanding your outstanding loan balance can help you plan eligible part-prepayments more effectively.",
+      text: "Understanding your outstanding loan balance can help you plan eligible part-prepayments and reduce your interest burden.",
     },
   ];
 
@@ -49,7 +49,7 @@ function HomeLoanBenefits() {
           fontSize: "28px",
         }}
       >
-        Benefits of Using a Home Loan Calculator
+        Benefits of Using a Car Loan Calculator
       </h2>
 
       <p
@@ -59,9 +59,9 @@ function HomeLoanBenefits() {
           lineHeight: 1.6,
         }}
       >
-        A Home Loan Calculator helps you understand
-        the cost of borrowing and plan your home loan
-        repayment before making a decision.
+        A Car Loan Calculator helps you understand
+        your monthly repayment and the overall cost
+        of financing your car.
       </p>
 
       <div
@@ -118,4 +118,4 @@ function HomeLoanBenefits() {
   );
 }
 
-export default HomeLoanBenefits;
+export default CarLoanBenefits;

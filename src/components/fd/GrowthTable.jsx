@@ -1,28 +1,23 @@
 function GrowthTable({
-  investment,
-  annualReturn,
+  deposit,
+  interestRate,
   years,
 }) {
   const rows = [];
 
-  let totalValue = 0;
-
   for (let year = 1; year <= years; year++) {
-    totalValue =
-      (totalValue + investment) *
-      (1 + annualReturn / 100);
+    const maturityValue =
+      deposit *
+      Math.pow(1 + interestRate / 100, year);
 
-    const investedAmount =
-      investment * year;
-
-    const returns =
-      totalValue - investedAmount;
+    const interestEarned =
+      maturityValue - deposit;
 
     rows.push({
       year,
-      invested: investedAmount,
-      returns,
-      total: totalValue,
+      deposit,
+      interestEarned,
+      maturityValue,
     });
   }
 
@@ -39,12 +34,9 @@ function GrowthTable({
         borderRadius: "20px",
         padding: "28px",
         boxShadow: "0 8px 24px rgba(15, 23, 42, 0.06)",
-        boxSizing: "border-box",
-        width: "100%",
       }}
     >
       <div style={{ marginBottom: "24px" }}>
-
         <h2
           style={{
             margin: 0,
@@ -53,7 +45,7 @@ function GrowthTable({
             color: "#0F172A",
           }}
         >
-          Year-wise PPF Growth
+          Year-wise FD Growth
         </h2>
 
         <p
@@ -64,25 +56,24 @@ function GrowthTable({
             color: "#64748B",
           }}
         >
-          See how your PPF investment can grow year by year.
+          See how your Fixed Deposit can grow year by year.
         </p>
-
       </div>
 
       <div style={{ overflowX: "auto" }}>
-
         <table
           style={{
             width: "100%",
-            minWidth: "600px",
             borderCollapse: "collapse",
+            minWidth: "600px",
           }}
         >
-
           <thead>
-
-            <tr style={{ background: "#EFF6FF" }}>
-
+            <tr
+              style={{
+                background: "#EFF6FF",
+              }}
+            >
               <th
                 style={{
                   padding: "15px",
@@ -100,7 +91,7 @@ function GrowthTable({
                   color: "#0F172A",
                 }}
               >
-                Investment
+                Deposit Amount
               </th>
 
               <th
@@ -120,19 +111,14 @@ function GrowthTable({
                   color: "#0F172A",
                 }}
               >
-                Total Value
+                Maturity Value
               </th>
-
             </tr>
-
           </thead>
 
           <tbody>
-
             {rows.map((row) => (
-
               <tr key={row.year}>
-
                 <td
                   style={{
                     padding: "15px",
@@ -150,7 +136,7 @@ function GrowthTable({
                     color: "#475569",
                   }}
                 >
-                  {formatCurrency(row.invested)}
+                  {formatCurrency(row.deposit)}
                 </td>
 
                 <td
@@ -161,7 +147,7 @@ function GrowthTable({
                     fontWeight: 600,
                   }}
                 >
-                  {formatCurrency(row.returns)}
+                  {formatCurrency(row.interestEarned)}
                 </td>
 
                 <td
@@ -172,19 +158,13 @@ function GrowthTable({
                     fontWeight: 600,
                   }}
                 >
-                  {formatCurrency(row.total)}
+                  {formatCurrency(row.maturityValue)}
                 </td>
-
               </tr>
-
             ))}
-
           </tbody>
-
         </table>
-
       </div>
-
     </section>
   );
 }

@@ -1,65 +1,87 @@
 import { useState } from "react";
 
-import "../calculators/SIPFAQ.css";
-
-const faqs = [
-  {
-    question: "What is a Lumpsum Investment?",
-    answer:
-      "A lumpsum investment is a one-time investment made into a mutual fund or any other investment product instead of investing monthly.",
-  },
-  {
-    question: "Who should invest through Lumpsum?",
-    answer:
-      "It is suitable for investors who have surplus money like bonuses, inheritance, maturity proceeds or savings available for immediate investment.",
-  },
-  {
-    question: "Is Lumpsum better than SIP?",
-    answer:
-      "Both have advantages. SIP helps average market volatility, while lumpsum can generate higher returns when invested during favorable market conditions.",
-  },
-  {
-    question: "Can I withdraw my investment anytime?",
-    answer:
-      "Yes. Most mutual funds allow redemption at any time, although exit loads and taxes may apply depending on the scheme.",
-  },
-  {
-    question: "Does a Lumpsum Calculator guarantee returns?",
-    answer:
-      "No. The calculator provides estimates based on expected annual returns. Actual returns depend on market performance.",
-  },
-];
+import "./LumpsumFAQ.css";
 
 function LumpsumFAQ() {
-  const [active, setActive] = useState(0);
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    {
+      question: "What is a lumpsum investment?",
+      answer:
+        "A lumpsum investment means investing a large amount of money at one time instead of investing it periodically.",
+    },
+    {
+      question: "How does the Lumpsum Calculator work?",
+      answer:
+        "The calculator uses your investment amount, expected annual return and investment period to estimate the future value of your investment.",
+    },
+    {
+      question: "Can I manually enter the investment amount?",
+      answer:
+        "Yes. You can manually enter the investment amount and change the expected return and investment period.",
+    },
+    {
+      question: "What is the power of compounding?",
+      answer:
+        "Compounding means your returns can generate additional returns when the investment remains invested over time.",
+    },
+    {
+      question: "Are the calculator returns guaranteed?",
+      answer:
+        "No. The calculator provides an estimate based on the return rate entered by you. Actual investment returns may be different.",
+    },
+  ];
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
-    <section className="faq-section">
+    <section className="lumpsum-faq">
 
-      <h2>Frequently Asked Questions</h2>
+      <div className="lumpsum-faq-header">
+        <h2>Frequently Asked Questions</h2>
 
-      {faqs.map((faq, index) => (
+        <p>
+          Common questions about lumpsum investments and this calculator.
+        </p>
+      </div>
 
-        <div className="faq-item" key={index}>
+      <div className="lumpsum-faq-list">
 
-          <button
-            className="faq-question"
-            onClick={() => setActive(active === index ? -1 : index)}
+        {faqs.map((faq, index) => (
+
+          <div
+            className={`lumpsum-faq-item ${
+              openIndex === index ? "open" : ""
+            }`}
+            key={faq.question}
           >
-            <span>{faq.question}</span>
 
-            <span>{active === index ? "−" : "+"}</span>
-          </button>
+            <button
+              type="button"
+              className="lumpsum-faq-question"
+              onClick={() => toggleFAQ(index)}
+            >
+              <span>{faq.question}</span>
 
-          {active === index && (
-            <div className="faq-answer">
-              {faq.answer}
-            </div>
-          )}
+              <span className="lumpsum-faq-icon">
+                {openIndex === index ? "−" : "+"}
+              </span>
+            </button>
 
-        </div>
+            {openIndex === index && (
+              <div className="lumpsum-faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            )}
 
-      ))}
+          </div>
+
+        ))}
+
+      </div>
 
     </section>
   );

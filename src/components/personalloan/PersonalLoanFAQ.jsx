@@ -1,34 +1,34 @@
-function HomeLoanFAQ() {
+function PersonalLoanFAQ() {
   const faqs = [
     {
-      question: "What is a Home Loan EMI?",
+      question: "What is a Personal Loan EMI?",
       answer:
-        "A Home Loan EMI is the fixed monthly payment made towards repaying a home loan. It generally consists of both principal and interest.",
+        "A Personal Loan EMI is the fixed monthly payment made towards repaying a personal loan. It generally consists of both principal and interest.",
     },
     {
-      question: "How is Home Loan EMI calculated?",
+      question: "How is Personal Loan EMI calculated?",
       answer:
-        "Home Loan EMI is calculated using the loan amount, interest rate and loan tenure. The calculator uses the standard reducing-balance EMI formula to estimate the monthly repayment.",
+        "Personal Loan EMI is calculated using the loan amount, interest rate and loan tenure. This calculator uses the standard reducing-balance EMI formula.",
     },
     {
-      question: "Does increasing the loan tenure reduce the EMI?",
+      question: "Does a longer tenure reduce the EMI?",
       answer:
         "Yes. A longer tenure generally reduces the monthly EMI, but it can increase the total interest paid over the entire loan period.",
     },
     {
-      question: "How can I reduce the total interest on my Home Loan?",
+      question: "How can I reduce the total interest on a Personal Loan?",
       answer:
-        "You may reduce total interest by choosing an appropriate tenure, comparing interest rates and making eligible part-prepayments when financially suitable.",
+        "You can consider choosing an appropriate tenure, comparing interest rates and making eligible part-prepayments when financially suitable.",
     },
     {
-      question: "What happens if the Home Loan interest rate changes?",
+      question: "Can I make a prepayment on my Personal Loan?",
       answer:
-        "For a floating-rate loan, a change in the interest rate can affect your EMI, tenure or both, depending on the lender's terms.",
+        "Prepayment availability and charges depend on the lender and loan terms. Check your lender's conditions before making a prepayment.",
     },
     {
-      question: "Does the calculator include processing fees and other charges?",
+      question: "Does this calculator include processing fees?",
       answer:
-        "No. This calculator estimates EMI, interest and total repayment based on the loan amount, interest rate and tenure entered. Processing fees, insurance, taxes and other lender-specific charges are not included.",
+        "No. This calculator estimates EMI, interest and total repayment based on the loan amount, interest rate and tenure. Processing fees and other lender-specific charges are not included.",
     },
   ];
 
@@ -49,7 +49,7 @@ function HomeLoanFAQ() {
           fontSize: "28px",
         }}
       >
-        Frequently Asked Questions About Home Loans
+        Frequently Asked Questions About Personal Loans
       </h2>
 
       <p
@@ -59,7 +59,7 @@ function HomeLoanFAQ() {
           lineHeight: 1.6,
         }}
       >
-        Common questions about Home Loan EMI,
+        Common questions about Personal Loan EMI,
         interest rates, tenure and repayment.
       </p>
 
@@ -108,4 +108,4 @@ function HomeLoanFAQ() {
   );
 }
 
-export default HomeLoanFAQ;
+export default PersonalLoanFAQ;

@@ -8,68 +8,79 @@ function GrowthTable({
   const rows = [];
 
   for (let year = 1; year <= years; year++) {
-    const maturity =
-      investment * Math.pow(1 + annualReturn / 100, year);
+    const totalValue =
+      investment *
+      Math.pow(1 + annualReturn / 100, year);
+
+    const returns = totalValue - investment;
 
     rows.push({
       year,
       invested: investment,
-      returns: maturity - investment,
-      total: maturity,
+      returns,
+      totalValue,
     });
   }
+
+  const formatCurrency = (value) => {
+    return `₹ ${Math.round(value).toLocaleString("en-IN")}`;
+  };
 
   return (
     <section className="growth-table">
 
-      <h2>Year-wise Lumpsum Growth</h2>
+      <div className="growth-table-header">
 
-      <table>
+        <h2>Year-wise Investment Growth</h2>
 
-        <thead>
+        <p>
+          See how your one-time investment can grow year by year.
+        </p>
 
-          <tr>
-            <th>Year</th>
-            <th>Investment</th>
-            <th>Returns</th>
-            <th>Total Value</th>
-          </tr>
+      </div>
 
-        </thead>
+      <div className="growth-table-wrapper">
 
-        <tbody>
+        <table>
 
-          {rows.map((row) => (
-
-            <tr key={row.year}>
-
-              <td>{row.year}</td>
-
-              <td>
-                ₹ {row.invested.toLocaleString("en-IN")}
-              </td>
-
-              <td style={{ color: "#16A34A" }}>
-                ₹{" "}
-                {row.returns.toLocaleString("en-IN", {
-                  maximumFractionDigits: 0,
-                })}
-              </td>
-
-              <td style={{ fontWeight: 600 }}>
-                ₹{" "}
-                {row.total.toLocaleString("en-IN", {
-                  maximumFractionDigits: 0,
-                })}
-              </td>
-
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Invested Amount</th>
+              <th>Estimated Returns</th>
+              <th>Total Value</th>
             </tr>
+          </thead>
 
-          ))}
+          <tbody>
 
-        </tbody>
+            {rows.map((row) => (
+              <tr key={row.year}>
 
-      </table>
+                <td>
+                  Year {row.year}
+                </td>
+
+                <td>
+                  {formatCurrency(row.invested)}
+                </td>
+
+                <td className="returns-value">
+                  {formatCurrency(row.returns)}
+                </td>
+
+                <td className="total-value">
+                  {formatCurrency(row.totalValue)}
+                </td>
+
+              </tr>
+            ))}
+
+          </tbody>
+
+        </table>
+
+      </div>
 
     </section>
   );

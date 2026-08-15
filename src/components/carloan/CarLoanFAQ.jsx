@@ -1,34 +1,34 @@
-function HomeLoanFAQ() {
+function CarLoanFAQ() {
   const faqs = [
     {
-      question: "What is a Home Loan EMI?",
+      question: "What is a Car Loan EMI?",
       answer:
-        "A Home Loan EMI is the fixed monthly payment made towards repaying a home loan. It generally consists of both principal and interest.",
+        "A Car Loan EMI is the fixed monthly payment made towards repaying a car loan. It generally consists of both principal and interest.",
     },
     {
-      question: "How is Home Loan EMI calculated?",
+      question: "How is Car Loan EMI calculated?",
       answer:
-        "Home Loan EMI is calculated using the loan amount, interest rate and loan tenure. The calculator uses the standard reducing-balance EMI formula to estimate the monthly repayment.",
+        "Car Loan EMI is calculated using the loan amount, interest rate and loan tenure. This calculator uses the standard reducing-balance EMI formula.",
     },
     {
-      question: "Does increasing the loan tenure reduce the EMI?",
+      question: "Does a longer car loan tenure reduce the EMI?",
       answer:
-        "Yes. A longer tenure generally reduces the monthly EMI, but it can increase the total interest paid over the entire loan period.",
+        "Yes. A longer tenure generally reduces your monthly EMI, but it can increase the total interest paid over the entire loan period.",
     },
     {
-      question: "How can I reduce the total interest on my Home Loan?",
+      question: "Should I make a larger down payment?",
       answer:
-        "You may reduce total interest by choosing an appropriate tenure, comparing interest rates and making eligible part-prepayments when financially suitable.",
+        "A larger down payment can reduce the amount you need to borrow and therefore reduce your EMI and total interest. However, keep enough cash available for your other financial needs.",
     },
     {
-      question: "What happens if the Home Loan interest rate changes?",
+      question: "Can I reduce my car loan interest through prepayment?",
       answer:
-        "For a floating-rate loan, a change in the interest rate can affect your EMI, tenure or both, depending on the lender's terms.",
+        "Eligible part-prepayments can reduce your outstanding principal and may reduce the total interest payable. Check your lender's prepayment conditions and charges before making a decision.",
     },
     {
-      question: "Does the calculator include processing fees and other charges?",
+      question: "Does this calculator include car purchase expenses?",
       answer:
-        "No. This calculator estimates EMI, interest and total repayment based on the loan amount, interest rate and tenure entered. Processing fees, insurance, taxes and other lender-specific charges are not included.",
+        "No. The calculator estimates the loan EMI, interest and repayment based on the loan amount, interest rate and tenure entered. Registration, insurance, processing fees and other vehicle expenses are not included.",
     },
   ];
 
@@ -49,7 +49,7 @@ function HomeLoanFAQ() {
           fontSize: "28px",
         }}
       >
-        Frequently Asked Questions About Home Loans
+        Frequently Asked Questions About Car Loans
       </h2>
 
       <p
@@ -59,7 +59,7 @@ function HomeLoanFAQ() {
           lineHeight: 1.6,
         }}
       >
-        Common questions about Home Loan EMI,
+        Common questions about Car Loan EMI,
         interest rates, tenure and repayment.
       </p>
 
@@ -108,4 +108,4 @@ function HomeLoanFAQ() {
   );
 }
 
-export default HomeLoanFAQ;
+export default CarLoanFAQ;

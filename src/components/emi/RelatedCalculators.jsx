@@ -1,31 +1,27 @@
 function RelatedCalculators() {
   const calculators = [
     {
-      icon: "🏦",
-      title: "EMI Calculator",
-      description:
-        "Calculate your monthly EMI, total interest and total repayment.",
-      path: "/loans/emi",
+      icon: "🏠",
+      title: "Home Loan Calculator",
+      description: "Calculate your home loan EMI and total interest.",
+      path: "/loans/home-loan",
     },
     {
       icon: "🚗",
       title: "Car Loan Calculator",
-      description:
-        "Calculate your car loan EMI, interest and repayment.",
+      description: "Calculate your car loan EMI and repayment.",
       path: "/loans/car-loan",
     },
     {
       icon: "💼",
       title: "Personal Loan Calculator",
-      description:
-        "Calculate your personal loan EMI and total interest.",
+      description: "Calculate your personal loan EMI and interest.",
       path: "/loans/personal-loan",
     },
     {
       icon: "📈",
       title: "SIP Calculator",
-      description:
-        "Estimate your potential SIP investment growth.",
+      description: "Calculate your potential SIP investment growth.",
       path: "/investments/sip",
     },
   ];
@@ -36,8 +32,7 @@ function RelatedCalculators() {
         background: "#ffffff",
         borderRadius: "18px",
         padding: "30px",
-        boxShadow:
-          "0 10px 25px rgba(0,0,0,0.08)",
+        boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
       }}
     >
       <h2
@@ -57,8 +52,8 @@ function RelatedCalculators() {
           lineHeight: 1.6,
         }}
       >
-        Explore other calculators to compare
-        different loan and investment scenarios.
+        Explore other calculators to plan your
+        finances and loan repayments.
       </p>
 
       <div
