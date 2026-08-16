@@ -9,6 +9,7 @@ import Loans from "./pages/Loans/Loans";
 import Tax from "./pages/Tax/Tax";
 
 import About from "./pages/About/About";
+import Contact from "./components/contact/Contact";
 
 import IncomeTaxCalculator from "./pages/Tax/IncomeTaxCalculator";
 import TaxRegimeComparison from "./pages/Tax/TaxRegimeComparison";
@@ -33,6 +34,7 @@ import PersonalLoanCalculator from "./components/personalloan/PersonalLoanCalcul
 function App() {
   return (
     <Layout>
+
       <Routes>
 
         {/* =========================
@@ -44,6 +46,7 @@ function App() {
           element={<Home />}
         />
 
+
         {/* =========================
             ABOUT
         ========================= */}
@@ -52,6 +55,17 @@ function App() {
           path="/about"
           element={<About />}
         />
+
+
+        {/* =========================
+            CONTACT
+        ========================= */}
+
+        <Route
+          path="/contact"
+          element={<Contact />}
+        />
+
 
         {/* =========================
             INVESTMENTS
@@ -92,6 +106,7 @@ function App() {
           element={<PPFCalculator />}
         />
 
+
         {/* =========================
             LOANS
         ========================= */}
@@ -120,6 +135,7 @@ function App() {
           path="/loans/personal-loan"
           element={<PersonalLoanCalculator />}
         />
+
 
         {/* =========================
             TAX
@@ -160,6 +176,7 @@ function App() {
         />
 
       </Routes>
+
     </Layout>
   );
 }
