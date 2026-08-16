@@ -10,6 +10,8 @@ import Tax from "./pages/Tax/Tax";
 
 import About from "./pages/About/About";
 import Contact from "./components/contact/Contact";
+import Planning from "./pages/Planning/Planning";
+import Blog from "./pages/Blog/Blog";
 
 import IncomeTaxCalculator from "./pages/Tax/IncomeTaxCalculator";
 import TaxRegimeComparison from "./pages/Tax/TaxRegimeComparison";
@@ -64,6 +66,26 @@ function App() {
         <Route
           path="/contact"
           element={<Contact />}
+        />
+
+
+        {/* =========================
+            PLANNING
+        ========================= */}
+
+        <Route
+          path="/planning"
+          element={<Planning />}
+        />
+
+
+        {/* =========================
+            BLOG
+        ========================= */}
+
+        <Route
+          path="/blog"
+          element={<Blog />}
         />
 
 
