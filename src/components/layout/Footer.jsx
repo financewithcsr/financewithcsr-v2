@@ -9,19 +9,34 @@ function Footer() {
 
         <div className="footer-grid">
 
-          {/* Column 1 */}
+          {/* =========================================
+              COLUMN 1 - BRAND
+          ========================================= */}
 
           <div>
-            <h2 className="footer-logo">FinanceWithCSR</h2>
+
+            <Link
+              to="/"
+              className="footer-logo-link"
+            >
+              <h2 className="footer-logo">
+                FinanceWithCSR
+              </h2>
+            </Link>
 
             <p className="footer-text">
-              Your one-stop destination for free financial calculators,
-              investment planning tools and personal finance education
-              designed especially for Indians.
+              Your one-stop destination for free financial
+              calculators, investment planning tools and
+              personal finance education designed especially
+              for Indians.
             </p>
+
           </div>
 
-          {/* Column 2 */}
+
+          {/* =========================================
+              COLUMN 2 - CALCULATORS
+          ========================================= */}
 
           <div>
 
@@ -29,19 +44,38 @@ function Footer() {
 
             <ul>
 
-              <li><Link to="/investments">SIP Calculator</Link></li>
+              <li>
+                <Link to="/investments/sip">
+                  SIP Calculator
+                </Link>
+              </li>
 
-              <li><Link to="/investments">FD Calculator</Link></li>
+              <li>
+                <Link to="/investments/fd">
+                  FD Calculator
+                </Link>
+              </li>
 
-              <li><Link to="/loans">EMI Calculator</Link></li>
+              <li>
+                <Link to="/loans/emi">
+                  EMI Calculator
+                </Link>
+              </li>
 
-              <li><Link to="/planning">Retirement Planner</Link></li>
+              <li>
+                <Link to="/planning">
+                  Retirement Planner
+                </Link>
+              </li>
 
             </ul>
 
           </div>
 
-          {/* Column 3 */}
+
+          {/* =========================================
+              COLUMN 3 - RESOURCES
+          ========================================= */}
 
           <div>
 
@@ -49,19 +83,38 @@ function Footer() {
 
             <ul>
 
-              <li><Link to="/blog">Finance Blog</Link></li>
+              <li>
+                <Link to="/blog">
+                  Finance Blog
+                </Link>
+              </li>
 
-              <li><Link to="/tax">Tax Planning</Link></li>
+              <li>
+                <Link to="/tax">
+                  Tax Planning
+                </Link>
+              </li>
 
-              <li><Link to="/contact">Contact</Link></li>
+              <li>
+                <Link to="/contact">
+                  Contact
+                </Link>
+              </li>
 
-              <li><Link to="/">About Us</Link></li>
+              <li>
+                <Link to="/about">
+                  About Us
+                </Link>
+              </li>
 
             </ul>
 
           </div>
 
-          {/* Column 4 */}
+
+          {/* =========================================
+              COLUMN 4 - LEGAL
+          ========================================= */}
 
           <div>
 
@@ -69,19 +122,40 @@ function Footer() {
 
             <ul>
 
-              <li><Link to="/">Privacy Policy</Link></li>
+              <li>
+                <Link to="/">
+                  Privacy Policy
+                </Link>
+              </li>
 
-              <li><Link to="/">Terms & Conditions</Link></li>
+              <li>
+                <Link to="/">
+                  Terms & Conditions
+                </Link>
+              </li>
 
-              <li><Link to="/">Disclaimer</Link></li>
+              <li>
+                <Link to="/">
+                  Disclaimer
+                </Link>
+              </li>
 
-              <li><Link to="/">Cookie Policy</Link></li>
+              <li>
+                <Link to="/">
+                  Cookie Policy
+                </Link>
+              </li>
 
             </ul>
 
           </div>
 
         </div>
+
+
+        {/* =========================================
+            FOOTER BOTTOM
+        ========================================= */}
 
         <div className="footer-bottom">
 

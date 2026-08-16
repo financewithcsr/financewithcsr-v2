@@ -1,0 +1,106 @@
+.tax-page {
+  padding: 50px 20px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tax-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.tax-header h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.tax-header p {
+  margin: 14px auto 0;
+  max-width: 700px;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.tax-page .calculator-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.tax-page .calculator-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tax-page .calculator-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tax-page .calculator-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.tax-page .calculator-card h3 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.tax-page .calculator-card p {
+  margin: 0 0 22px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 45px;
+}
+
+.tax-page .calculator-card button {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.tax-page .calculator-card button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 700px) {
+  .tax-page {
+    padding: 35px 16px 60px;
+  }
+
+  .tax-header h1 {
+    font-size: 32px;
+  }
+
+  .tax-header p {
+    font-size: 15px;
+  }
+
+  .tax-page .calculator-grid {
+    grid-template-columns: 1fr;
+  }
+}

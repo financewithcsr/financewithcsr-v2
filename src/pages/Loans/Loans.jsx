@@ -1,52 +1,91 @@
-import { Link } from "react-router-dom";
+import "./Loans.css";
+import { useNavigate } from "react-router-dom";
+
+const calculators = [
+  {
+    title: "EMI Calculator",
+    description:
+      "Calculate your monthly EMI, total interest and total repayment.",
+    icon: "🧮",
+    path: "/loans/emi",
+  },
+  {
+    title: "Home Loan Calculator",
+    description:
+      "Calculate your home loan EMI, interest and total repayment.",
+    icon: "🏠",
+    path: "/loans/home-loan",
+  },
+  {
+    title: "Car Loan Calculator",
+    description:
+      "Calculate your car loan EMI, interest and total repayment.",
+    icon: "🚗",
+    path: "/loans/car-loan",
+  },
+  {
+    title: "Personal Loan Calculator",
+    description:
+      "Calculate your personal loan EMI, interest and repayment.",
+    icon: "💼",
+    path: "/loans/personal-loan",
+  },
+];
 
 function Loans() {
+  const navigate = useNavigate();
+
+  const openCalculator = (path) => {
+    navigate(path);
+  };
+
   return (
-    <div className="container" style={{ padding: "80px 0" }}>
-      <h1>Loan Calculators</h1>
+    <section className="loans-page">
 
-      <p style={{ marginBottom: "40px" }}>
-        Choose a calculator to plan your loan better.
-      </p>
+      <div className="loans-header">
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
-          gap: "25px",
-        }}
-      >
-        <div
-          style={{
-            background: "#fff",
-            padding: "30px",
-            borderRadius: "16px",
-            boxShadow: "0 10px 25px rgba(0,0,0,.08)",
-          }}
-        >
-          <h2>EMI Calculator</h2>
+        <h1>Loan Calculators</h1>
 
-          <p>
-            Calculate your monthly EMI, interest payable and total payment.
-          </p>
+        <p>
+          Choose a calculator below to understand your
+          loan EMI, interest and total repayment.
+        </p>
 
-          <Link
-            to="/loans/emi"
-            style={{
-              display: "inline-block",
-              marginTop: "20px",
-              padding: "12px 22px",
-              background: "#2563EB",
-              color: "#fff",
-              borderRadius: "8px",
-              textDecoration: "none",
-            }}
-          >
-            Open Calculator →
-          </Link>
-        </div>
       </div>
-    </div>
+
+      <div className="calculator-grid">
+
+        {calculators.map((item) => (
+
+          <div
+            className="calculator-card"
+            key={item.title}
+          >
+
+            <div className="calculator-icon">
+              {item.icon}
+            </div>
+
+            <h3>{item.title}</h3>
+
+            <p>{item.description}</p>
+
+            <button
+              type="button"
+              onClick={() =>
+                openCalculator(item.path)
+              }
+            >
+              Calculate now →
+            </button>
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </section>
   );
 }
 

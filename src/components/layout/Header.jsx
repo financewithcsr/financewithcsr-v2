@@ -1,25 +1,37 @@
 import { NavLink } from "react-router-dom";
 import "../../styles/header.css";
 
+import financewithcsrLogo from "../../assets/financewithcsr-logo.png";
+
 function Header() {
   return (
     <header className="site-header">
       <div className="header-container">
 
-        {/* Logo */}
-        <NavLink to="/" className="brand-logo">
-          <span className="brand-finance">
-            Finance
-          </span>
+        {/* =========================
+            BRAND LOGO
+        ========================= */}
 
-          <span className="brand-csr">
-            WithCSR
-          </span>
+        <NavLink
+          to="/"
+          className="brand-logo"
+          aria-label="Finance with CSR Home"
+        >
+          <img
+            src={financewithcsrLogo}
+            alt="Finance with CSR"
+            className="brand-logo-image"
+          />
         </NavLink>
 
-        {/* Navigation */}
-        <nav className="nav-links">
+        {/* =========================
+            NAVIGATION
+        ========================= */}
 
+        <nav
+          className="nav-links"
+          aria-label="Main navigation"
+        >
           <NavLink
             to="/investments"
             className="nav-link"
@@ -61,17 +73,23 @@ function Header() {
           >
             Contact
           </NavLink>
-
         </nav>
 
-        {/* Header Actions */}
+        {/* =========================
+            HEADER ACTIONS
+        ========================= */}
+
         <div className="header-actions">
 
           <button
             className="search-btn"
             type="button"
+            aria-label="Search"
           >
-            <span className="search-icon">
+            <span
+              className="search-icon"
+              aria-hidden="true"
+            >
               ⌕
             </span>
 
@@ -84,18 +102,27 @@ function Header() {
             to="/investments"
             className="start-btn"
           >
-            Start Now
+            <span>Start Now</span>
+            <span
+              className="start-arrow"
+              aria-hidden="true"
+            >
+              →
+            </span>
           </NavLink>
 
         </div>
 
-        {/* Mobile Menu */}
+        {/* =========================
+            MOBILE MENU
+        ========================= */}
+
         <button
           className="menu-btn"
           type="button"
           aria-label="Open menu"
         >
-          ☰
+          <span>☰</span>
         </button>
 
       </div>

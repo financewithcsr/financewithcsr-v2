@@ -5,6 +5,16 @@ import Layout from "./components/layout/Layout";
 
 import Home from "./pages/Home";
 import Investments from "./pages/Investments/Investments";
+import Loans from "./pages/Loans/Loans";
+import Tax from "./pages/Tax/Tax";
+
+import About from "./pages/About/About";
+
+import IncomeTaxCalculator from "./pages/Tax/IncomeTaxCalculator";
+import TaxRegimeComparison from "./pages/Tax/TaxRegimeComparison";
+import HRACalculator from "./pages/Tax/HRACalculator";
+import EightyCTaxSavingCalculator from "./pages/Tax/80CTaxSavingCalculator";
+import HomeLoanTaxBenefitsCalculator from "./pages/Tax/HomeLoanTaxBenefitsCalculator";
 
 // Investment Calculators
 import SIPCalculator from "./components/calculators/SIPCalculator";
@@ -25,19 +35,33 @@ function App() {
     <Layout>
       <Routes>
 
-        {/* Home */}
+        {/* =========================
+            HOME
+        ========================= */}
+
         <Route
           path="/"
           element={<Home />}
         />
 
-        {/* Investments Landing */}
+        {/* =========================
+            ABOUT
+        ========================= */}
+
+        <Route
+          path="/about"
+          element={<About />}
+        />
+
+        {/* =========================
+            INVESTMENTS
+        ========================= */}
+
         <Route
           path="/investments"
           element={<Investments />}
         />
 
-        {/* Investment Calculators */}
         <Route
           path="/investments/sip"
           element={<SIPCalculator />}
@@ -68,7 +92,14 @@ function App() {
           element={<PPFCalculator />}
         />
 
-        {/* Loan Calculators */}
+        {/* =========================
+            LOANS
+        ========================= */}
+
+        <Route
+          path="/loans"
+          element={<Loans />}
+        />
 
         <Route
           path="/loans/emi"
@@ -88,6 +119,44 @@ function App() {
         <Route
           path="/loans/personal-loan"
           element={<PersonalLoanCalculator />}
+        />
+
+        {/* =========================
+            TAX
+        ========================= */}
+
+        <Route
+          path="/tax"
+          element={<Tax />}
+        />
+
+        <Route
+          path="/tax/income-tax"
+          element={<IncomeTaxCalculator />}
+        />
+
+        <Route
+          path="/tax/regime-comparison"
+          element={<TaxRegimeComparison />}
+        />
+
+        <Route
+          path="/tax/hra"
+          element={<HRACalculator />}
+        />
+
+        <Route
+          path="/tax/80c"
+          element={
+            <EightyCTaxSavingCalculator />
+          }
+        />
+
+        <Route
+          path="/tax/home-loan-benefits"
+          element={
+            <HomeLoanTaxBenefitsCalculator />
+          }
         />
 
       </Routes>
